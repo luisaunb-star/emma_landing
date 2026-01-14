@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X, MessageCircle, Bot } from "lucide-react";
 import Logo from "@/components/ui/Logo";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -66,8 +66,8 @@ export default function Navbar() {
           <Link href="/chat">
             <div className="cursor-pointer">
               <Button className="bg-emma-primary hover:bg-emma-primary/90 text-white rounded-full pl-2 pr-6 gap-3 h-12">
-                <div className="w-8 h-8 rounded-full bg-white overflow-hidden border-2 border-white/50">
-                  <img src="/images/emma-avatar.png" alt="Emma" className="w-full h-full object-cover" />
+                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border-2 border-white/50">
+                  <Bot className="w-5 h-5 text-emma-primary" />
                 </div>
                 Falar com Emma
               </Button>
@@ -99,8 +99,8 @@ export default function Navbar() {
           ))}
           <Link href="/chat">
             <Button className="w-full bg-emma-primary hover:bg-emma-primary/90 text-white rounded-xl gap-3 mt-2 h-12 justify-start pl-4">
-              <div className="w-8 h-8 rounded-full bg-white overflow-hidden border-2 border-white/50">
-                <img src="/images/emma-avatar.png" alt="Emma" className="w-full h-full object-cover" />
+              <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border-2 border-white/50">
+                <Bot className="w-5 h-5 text-emma-primary" />
               </div>
               Falar com Emma
             </Button>

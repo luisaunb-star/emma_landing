@@ -34,3 +34,7 @@
 
 ## Ajuste Final - Time
 - [x] Atualizar descrição do Filipe Zanovello para perfil clínico (similar ao Ricardo)
+
+
+## Ajuste de Avatar
+- [x] Substituir imagem do avatar da Emma por ícone genérico de chat (Lucide React)

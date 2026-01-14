@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
-import { ArrowLeft, Send, Paperclip, Mic, Loader2, Shield } from "lucide-react";
+import { ArrowLeft, Send, Paperclip, Mic, Loader2, Shield, Bot } from "lucide-react";
 import Logo from "@/components/ui/Logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -106,8 +106,8 @@ export default function Chat() {
           </Link>
           <div className="flex items-center gap-3">
             <div className="relative">
-              <div className="w-10 h-10 rounded-full bg-white overflow-hidden border border-emma-primary/20">
-                <img src="/images/emma-avatar.png" alt="Emma" className="w-full h-full object-cover" />
+              <div className="w-10 h-10 rounded-full bg-emma-primary/10 flex items-center justify-center border border-emma-primary/20">
+                <Bot className="w-6 h-6 text-emma-primary" />
               </div>
               <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
             </div>
