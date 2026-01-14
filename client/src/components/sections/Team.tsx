@@ -6,27 +6,50 @@ const team = [
   {
     name: "Ricardo Bezerra",
     role: "Expertise Clínica",
-    desc: "Foco na aplicação médica e validação científica."
+    desc: "Foco na aplicação médica e validação científica.",
+    linkedin: "#"
   },
   {
     name: "Gabriela Queiroz",
     role: "Expertise Clínica",
-    desc: "Especialista em neurologia e cuidado ao paciente."
+    desc: "Especialista em neurologia e cuidado ao paciente.",
+    linkedin: "#"
   },
   {
     name: "Heitor Reis",
     role: "Tecnologia & IA",
-    desc: "Desenvolvimento de algoritmos e biotecnologia."
+    desc: "Desenvolvimento de algoritmos e biotecnologia.",
+    linkedin: "#"
   },
   {
     name: "Yasmim Pinheiro",
     role: "Tecnologia & IA",
-    desc: "Engenharia de software e análise de dados."
+    desc: "Engenharia de software e análise de dados.",
+    linkedin: "#"
   },
   {
     name: "Luisa Guimarães",
     role: "Estratégia & Negócios",
-    desc: "Visão empreendedora e modelo B2B2C."
+    desc: "Visão empreendedora e modelo B2B2C.",
+    linkedin: "#"
+  },
+  {
+    name: "Filipe Zanovello",
+    role: "Tecnologia",
+    desc: "Desenvolvimento e arquitetura de software.",
+    linkedin: "https://www.linkedin.com/in/filipezanovello/"
+  },
+  {
+    name: "Isabela Medeiros",
+    role: "Design & UX",
+    desc: "Design de produto e experiência do usuário.",
+    linkedin: "#"
+  },
+  {
+    name: "João Paulo Nardari",
+    role: "Tecnologia",
+    desc: "Inovação tecnológica e desenvolvimento.",
+    linkedin: "https://www.linkedin.com/in/jpnardari/"
   }
 ];
 
@@ -51,7 +74,7 @@ export default function Team() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-20">
           {team.map((member, index) => (
             <motion.div
               key={index}
@@ -68,7 +91,7 @@ export default function Team() {
               <p className="text-xs font-bold text-emma-primary uppercase tracking-wide mb-3">{member.role}</p>
               <p className="text-sm text-muted-foreground">{member.desc}</p>
               <div className="mt-4 flex justify-center">
-                <a href="#" className="text-gray-400 hover:text-emma-primary transition-colors">
+                <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-emma-primary transition-colors">
                   <Linkedin className="w-4 h-4" />
                 </a>
               </div>

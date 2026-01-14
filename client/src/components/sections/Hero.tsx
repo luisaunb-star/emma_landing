@@ -26,31 +26,36 @@ export default function Hero() {
             Inovação em Saúde Digital
           </div>
           
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold leading-tight text-emma-text">
-            Quando o cuidado <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emma-primary to-emma-text">se adapta a você</span>, Emma.
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold leading-tight text-emma-text">
+            Monitoramento preciso, <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emma-primary to-emma-text">cuidado humano</span>:
+            <br />
+            a evolução do tratamento da Esclerose Múltipla.
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
-            Monitoramento contínuo e objetivo da Esclerose Múltipla através de biomarcadores digitais e gamificação. Transformando o cuidado reativo em proativo.
+            Monitoramento contínuo e objetivo da Esclerose Múltipla por meio de biomarcadores digitais e gamificação. Transformando o cuidado reativo em proativo.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button className="btn-primary text-lg h-14 px-8">
-              Conheça a Solução
+            <Button 
+              className="btn-primary text-base md:text-lg h-12 md:h-14 px-6 md:px-8"
+              onClick={() => document.getElementById('patients')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              Para Pacientes
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
             <Button 
               variant="outline" 
-              className="text-lg h-14 px-8 border-emma-primary/20 text-emma-text hover:bg-emma-secondary/50"
+              className="text-base md:text-lg h-12 md:h-14 px-6 md:px-8 border-emma-primary/20 text-emma-text hover:bg-emma-secondary/50"
               onClick={() => document.getElementById('doctors')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Para Médicos
             </Button>
             <Button 
               variant="outline" 
-              className="text-lg h-14 px-8 border-emma-primary/20 text-emma-text hover:bg-emma-secondary/50"
-              onClick={() => document.getElementById('doctors')?.scrollIntoView({ behavior: 'smooth' })}
+              className="text-base md:text-lg h-12 md:h-14 px-6 md:px-8 border-emma-primary/20 text-emma-text hover:bg-emma-secondary/50"
+              onClick={() => document.getElementById('pharma')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Para Farmacêuticas
             </Button>
@@ -79,8 +84,8 @@ export default function Hero() {
           className="relative"
         >
           <div className="relative z-10 glass-card p-6 md:p-8 max-w-md mx-auto rotate-[-2deg] hover:rotate-0 transition-transform duration-500">
-            <div className="absolute -top-6 -right-6 w-20 h-20 bg-emma-gold rounded-full flex items-center justify-center shadow-lg animate-bounce" style={{ animationDuration: '3s' }}>
-              <span className="font-bold text-emma-text text-xs text-center leading-tight">Gamified<br/>Health</span>
+            <div className="absolute -top-6 -right-6 w-24 h-24 bg-emma-gold rounded-full flex items-center justify-center shadow-lg animate-bounce" style={{ animationDuration: '3s' }}>
+              <span className="font-bold text-emma-text text-xs text-center leading-tight">Jornada<br/>Gamificada</span>
             </div>
             
             {/* Mockup Content Placeholder - Will be replaced by generated image or better CSS art */}

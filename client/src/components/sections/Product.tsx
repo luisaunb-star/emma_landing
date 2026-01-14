@@ -39,7 +39,7 @@ export default function Product() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emma-primary to-indigo-600">Gamificados</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Transformamos sensores padrão de smartphones em ferramentas de avaliação neurológica precisas, tudo através de uma experiência engajadora.
+            Transformamos sensores padrão de smartphones em ferramentas de avaliação neurológica precisas, tudo por meio de uma experiência engajadora.
           </p>
         </div>
 

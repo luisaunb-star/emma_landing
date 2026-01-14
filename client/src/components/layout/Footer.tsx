@@ -8,9 +8,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
           <div className="col-span-1 md:col-span-1">
             <Link href="/">
-              <a className="flex items-center gap-2 mb-4 group">
+              <div className="flex items-center gap-2 mb-4 group cursor-pointer">
                 <Logo className="w-8 h-8" textClassName="text-xl" />
-              </a>
+              </div>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Transformando o monitoramento da Esclerose Múltipla com biomarcadores digitais e cuidado proativo.

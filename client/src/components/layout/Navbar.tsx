@@ -20,8 +20,9 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Produto", href: "#product" },
-    { name: "Para Médicos", href: "#doctors" },
     { name: "Para Pacientes", href: "#patients" },
+    { name: "Para Médicos", href: "#doctors" },
+    { name: "Para Farmacêuticas", href: "#pharma" },
     { name: "Time", href: "#team" },
   ];
 
@@ -44,11 +45,11 @@ export default function Navbar() {
       )}
     >
       <div className="container flex items-center justify-between">
-          <Link href="/">
-            <a className="flex items-center gap-2 group">
-              <Logo />
-            </a>
-          </Link>
+        <Link href="/">
+          <div className="flex items-center gap-2 group cursor-pointer">
+            <Logo />
+          </div>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
@@ -63,12 +64,14 @@ export default function Navbar() {
             </a>
           ))}
           <Link href="/chat">
-            <Button className="bg-emma-primary hover:bg-emma-primary/90 text-white rounded-full pl-2 pr-6 gap-3 h-12">
-              <div className="w-8 h-8 rounded-full bg-white overflow-hidden border-2 border-white/50">
-                <img src="/images/emma-avatar.png" alt="Emma" className="w-full h-full object-cover" />
-              </div>
-              Falar com Emma
-            </Button>
+            <div className="cursor-pointer">
+              <Button className="bg-emma-primary hover:bg-emma-primary/90 text-white rounded-full pl-2 pr-6 gap-3 h-12">
+                <div className="w-8 h-8 rounded-full bg-white overflow-hidden border-2 border-white/50">
+                  <img src="/images/emma-avatar.png" alt="Emma" className="w-full h-full object-cover" />
+                </div>
+                Falar com Emma
+              </Button>
+            </div>
           </Link>
         </div>
 
