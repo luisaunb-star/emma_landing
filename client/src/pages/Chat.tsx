@@ -1,22 +1,65 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "wouter";
-import { ArrowLeft, Send, Paperclip, Mic, Loader2 } from "lucide-react";
+import { ArrowLeft, Send, Paperclip, Mic, Loader2, Shield } from "lucide-react";
 import Logo from "@/components/ui/Logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { trpc } from "@/lib/trpc";
 
 export default function Chat() {
+  const [userName, setUserName] = useState<string | null>(null);
   const [messages, setMessages] = useState([
-    { id: 1, sender: "bot", text: "Olá! Sou a Emma. Como posso ajudar você hoje com o monitoramento da sua saúde?" }
+    { 
+      id: 1, 
+      sender: "bot", 
+      text: "Olá! Eu sou a Emma, sua assistente virtual especializada em Esclerose Múltipla. 🌟\n\nPara te ajudar melhor, como posso te chamar?" 
+    }
   ]);
   const [inputValue, setInputValue] = useState("");
+  const [showPrivacyNotice, setShowPrivacyNotice] = useState(true);
 
   const sendMessageMutation = trpc.chat.sendMessage.useMutation();
+
+  // Carregar nome do localStorage ao iniciar
+  useEffect(() => {
+    const savedName = localStorage.getItem('emma_user_name');
+    if (savedName) {
+      setUserName(savedName);
+      setMessages([
+        { 
+          id: 1, 
+          sender: "bot", 
+          text: `Olá novamente, ${savedName}! 🌟\n\nComo posso ajudar você hoje com o monitoramento da sua saúde?` 
+        }
+      ]);
+    }
+  }, []);
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputValue.trim() || sendMessageMutation.isPending) return;
+
+    // Se ainda não temos o nome e a mensagem parece ser um nome (curta, sem pontuação)
+    if (!userName && inputValue.trim().split(' ').length <= 3 && !/[.!?]/.test(inputValue)) {
+      const name = inputValue.trim();
+      setUserName(name);
+      localStorage.setItem('emma_user_name', name);
+      
+      const userMsg = { id: Date.now(), sender: "user", text: inputValue };
+      setMessages(prev => [...prev, userMsg]);
+      setInputValue("");
+
+      // Resposta de boas-vindas personalizada
+      setTimeout(() => {
+        const welcomeMsg = { 
+          id: Date.now() + 1, 
+          sender: "bot", 
+          text: `Prazer em conhecer você, ${name}! ❤️\n\nEstou aqui para te ajudar a entender melhor a plataforma Emma e esclarecer dúvidas sobre Esclerose Múltipla. O que você gostaria de saber?` 
+        };
+        setMessages(prev => [...prev, welcomeMsg]);
+      }, 500);
+      return;
+    }
 
     // Adiciona mensagem do usuário
     const newUserMsg = { id: Date.now(), sender: "user", text: inputValue };
@@ -28,6 +71,7 @@ export default function Chat() {
       // Chama a API do Claude via tRPC
       const response = await sendMessageMutation.mutateAsync({
         message: currentMessage,
+        userName: userName || undefined,
       });
 
       // Adiciona resposta da Emma
@@ -80,6 +124,27 @@ export default function Chat() {
         </Button>
       </header>
 
+      {/* Aviso de Privacidade (LGPD) */}
+      {showPrivacyNotice && (
+        <div className="bg-emma-card/50 border-b border-border px-4 py-3">
+          <div className="max-w-4xl mx-auto flex items-start gap-3">
+            <Shield className="w-5 h-5 text-emma-primary shrink-0 mt-0.5" />
+            <div className="flex-1">
+              <p className="text-xs text-emma-text leading-relaxed">
+                <strong>Sua privacidade é importante.</strong> Esta conversa não é armazenada em nossos servidores. 
+                Seus dados permanecem apenas no seu navegador e respeitamos a LGPD.
+              </p>
+            </div>
+            <button 
+              onClick={() => setShowPrivacyNotice(false)}
+              className="text-xs text-muted-foreground hover:text-emma-text"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Chat Area */}
       <main className="flex-1 overflow-y-auto p-4 md:p-6 space-y-6">
         <div className="text-center text-xs text-muted-foreground my-4">
@@ -125,7 +190,7 @@ export default function Chat() {
             <Input 
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Digite sua mensagem..." 
+              placeholder={!userName ? "Digite seu nome..." : "Digite sua mensagem..."} 
               className="border-0 bg-transparent shadow-none focus-visible:ring-0 px-2"
               disabled={sendMessageMutation.isPending}
             />
