@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import { ArrowLeft, Send, Paperclip, Mic } from "lucide-react";
+import Logo from "@/components/ui/Logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -42,19 +43,8 @@ export default function Chat() {
           </Link>
           <div className="flex items-center gap-3">
             <div className="relative">
-              <div className="w-10 h-10 rounded-full bg-emma-primary/10 flex items-center justify-center border border-emma-primary/20">
-                <svg 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  className="w-6 h-6 text-emma-primary"
-                >
-                  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-                  <path d="M12 5 9.04 11a2.4 2.4 0 0 0 0 2L12 19l2.96-6a2.4 2.4 0 0 0 0-2L12 5Z" />
-                </svg>
+              <div className="w-10 h-10 rounded-full bg-white overflow-hidden border border-emma-primary/20">
+                <img src="/images/emma-avatar.png" alt="Emma" className="w-full h-full object-cover" />
               </div>
               <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
             </div>

@@ -27,8 +27,8 @@ export default function Hero() {
           </div>
           
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold leading-tight text-emma-text">
-            When care <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emma-primary to-emma-text">fits you</span>, Emma.
+            Quando o cuidado <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emma-primary to-emma-text">se adapta a você</span>, Emma.
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
@@ -40,8 +40,19 @@ export default function Hero() {
               Conheça a Solução
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
-            <Button variant="outline" className="text-lg h-14 px-8 border-emma-primary/20 text-emma-text hover:bg-emma-secondary/50">
+            <Button 
+              variant="outline" 
+              className="text-lg h-14 px-8 border-emma-primary/20 text-emma-text hover:bg-emma-secondary/50"
+              onClick={() => document.getElementById('doctors')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               Para Médicos
+            </Button>
+            <Button 
+              variant="outline" 
+              className="text-lg h-14 px-8 border-emma-primary/20 text-emma-text hover:bg-emma-secondary/50"
+              onClick={() => document.getElementById('doctors')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              Para Farmacêuticas
             </Button>
           </div>
 

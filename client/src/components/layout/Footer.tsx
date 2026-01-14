@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import Logo from "@/components/ui/Logo";
 
 export default function Footer() {
   return (
@@ -8,21 +9,7 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-1">
             <Link href="/">
               <a className="flex items-center gap-2 mb-4 group">
-                <div className="relative w-8 h-8 flex items-center justify-center bg-emma-primary/10 rounded-lg">
-                  <svg 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    className="w-5 h-5 text-emma-primary"
-                  >
-                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-                    <path d="M12 5 9.04 11a2.4 2.4 0 0 0 0 2L12 19l2.96-6a2.4 2.4 0 0 0 0-2L12 5Z" />
-                  </svg>
-                </div>
-                <span className="font-heading font-bold text-xl text-emma-text">Emma</span>
+                <Logo className="w-8 h-8" textClassName="text-xl" />
               </a>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
