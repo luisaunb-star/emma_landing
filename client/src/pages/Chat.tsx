@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { ArrowLeft, Send, Paperclip, Mic } from "lucide-react";
+import { ArrowLeft, Send, Paperclip, Mic, Loader2 } from "lucide-react";
 import Logo from "@/components/ui/Logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { trpc } from "@/lib/trpc";
 
 export default function Chat() {
   const [messages, setMessages] = useState([
@@ -11,24 +12,40 @@ export default function Chat() {
   ]);
   const [inputValue, setInputValue] = useState("");
 
-  const handleSendMessage = (e: React.FormEvent) => {
+  const sendMessageMutation = trpc.chat.sendMessage.useMutation();
+
+  const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!inputValue.trim()) return;
+    if (!inputValue.trim() || sendMessageMutation.isPending) return;
 
     // Adiciona mensagem do usuário
     const newUserMsg = { id: Date.now(), sender: "user", text: inputValue };
     setMessages(prev => [...prev, newUserMsg]);
+    const currentMessage = inputValue;
     setInputValue("");
 
-    // Simula resposta do bot (placeholder para integração n8n)
-    setTimeout(() => {
+    try {
+      // Chama a API do Claude via tRPC
+      const response = await sendMessageMutation.mutateAsync({
+        message: currentMessage,
+      });
+
+      // Adiciona resposta da Emma
       const botResponse = { 
         id: Date.now() + 1, 
         sender: "bot", 
-        text: "Obrigada pela mensagem! Esta é uma interface de demonstração. Para integrar com um agente real via n8n, você pode conectar a API aqui." 
+        text: response.output
       };
       setMessages(prev => [...prev, botResponse]);
-    }, 1000);
+    } catch (error: any) {
+      // Adiciona mensagem de erro
+      const errorMsg = { 
+        id: Date.now() + 1, 
+        sender: "bot", 
+        text: error.message || "Desculpe, ocorreu um erro. Tente novamente."
+      };
+      setMessages(prev => [...prev, errorMsg]);
+    }
   };
 
   return (
@@ -52,7 +69,9 @@ export default function Chat() {
             </div>
             <div>
               <h1 className="font-bold text-emma-text text-sm">Emma Assistant</h1>
-              <p className="text-xs text-muted-foreground">Online agora</p>
+              <p className="text-xs text-muted-foreground">
+                {sendMessageMutation.isPending ? "Digitando..." : "Online agora"}
+              </p>
             </div>
           </div>
         </div>
@@ -79,10 +98,21 @@ export default function Chat() {
                   : "bg-white text-emma-text border border-border rounded-tl-none"
               }`}
             >
-              <p className="text-sm leading-relaxed">{msg.text}</p>
+              <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.text}</p>
             </div>
           </div>
         ))}
+
+        {sendMessageMutation.isPending && (
+          <div className="flex justify-start">
+            <div className="max-w-[80%] md:max-w-[60%] p-4 rounded-2xl shadow-sm bg-white text-emma-text border border-border rounded-tl-none">
+              <div className="flex items-center gap-2">
+                <Loader2 className="w-4 h-4 animate-spin text-emma-primary" />
+                <span className="text-sm text-muted-foreground">Emma está pensando...</span>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
 
       {/* Input Area */}
@@ -97,11 +127,17 @@ export default function Chat() {
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="Digite sua mensagem..." 
               className="border-0 bg-transparent shadow-none focus-visible:ring-0 px-2"
+              disabled={sendMessageMutation.isPending}
             />
             <Button type="button" variant="ghost" size="icon" className="rounded-full text-muted-foreground hover:text-emma-primary">
               <Mic className="w-5 h-5" />
             </Button>
-            <Button type="submit" size="icon" className="rounded-full bg-emma-primary hover:bg-emma-primary/90 text-white w-10 h-10 shrink-0">
+            <Button 
+              type="submit" 
+              size="icon" 
+              className="rounded-full bg-emma-primary hover:bg-emma-primary/90 text-white w-10 h-10 shrink-0"
+              disabled={!inputValue.trim() || sendMessageMutation.isPending}
+            >
               <Send className="w-4 h-4 ml-0.5" />
             </Button>
           </form>

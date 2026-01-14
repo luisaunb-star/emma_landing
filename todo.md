@@ -1,16 +1,16 @@
-# Tarefas de Refinamento - Emma Landing Page (Rodada 3)
+# Tarefas de Implementação - Integração Claude
 
-- [ ] **Design & Assets:**
-    - [ ] Gerar novo avatar da Emma (mais simples/flat, menos 3D complexo).
-    - [ ] Ajustar layout do Hero: reduzir tamanho do celular ou ajustar posicionamento para não cobrir conteúdo em telas largas.
+- [x] **Upgrade do Projeto:**
+    - [x] Adicionar feature `web-db-user` para habilitar backend e segredos.
 
-- [ ] **Conteúdo & Texto:**
-    - [ ] Hero: Remover texto após os dois pontos na frase de efeito.
-    - [ ] Time: Atualizar cargo do Filipe Zanovello para "Expertise Clínica".
-    - [ ] Time: Adicionar links do LinkedIn para todos os membros listados.
-    - [ ] Footer: Remover links quebrados/inexistentes.
+- [x] **Backend (Server):**
+    - [x] Instalar `@anthropic-ai/sdk`.
+    - [x] Criar rota `/api/chat` no `server/routes.ts` (ou similar).
+    - [x] Implementar lógica de chamada ao Claude com System Prompt otimizado para a Emma.
 
-- [ ] **Integração Técnica:**
-    - [ ] Criar endpoint no servidor (`server/index.ts`) para integração com Anthropic (Claude).
-    - [ ] Atualizar `Chat.tsx` para usar esse endpoint.
-    - [ ] Criar guia específico para obter a chave da API do Claude.
+- [x] **Frontend (Client):**
+    - [x] Atualizar `Chat.tsx` para fazer POST na rota `/api/chat`.
+    - [x] Adicionar feedback visual de "Emma digitando...".
+
+- [x] **Documentação:**
+    - [x] Criar guia simples: "Como ativar o Chat" (explicando onde colar a chave no painel Secrets).
