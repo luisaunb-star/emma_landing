@@ -7,35 +7,35 @@ const team = [
     name: "Ricardo Bezerra",
     role: "Expertise Clínica",
     desc: "Foco na aplicação médica e validação científica.",
-    linkedin: "#"
+    linkedin: "https://www.linkedin.com/in/ricardoavilab/"
   },
   {
     name: "Gabriela Queiroz",
     role: "Expertise Clínica",
     desc: "Especialista em neurologia e cuidado ao paciente.",
-    linkedin: "#"
+    linkedin: "https://www.linkedin.com/in/maria-gabriela-carneiro-queiroz-b32989265/"
   },
   {
     name: "Heitor Reis",
     role: "Tecnologia & IA",
     desc: "Desenvolvimento de algoritmos e biotecnologia.",
-    linkedin: "#"
+    linkedin: "https://www.linkedin.com/in/heitor-gbr/"
   },
   {
     name: "Yasmim Pinheiro",
     role: "Tecnologia & IA",
     desc: "Engenharia de software e análise de dados.",
-    linkedin: "#"
+    linkedin: "https://www.linkedin.com/in/yasmin-pinheiro-54b86514a/"
   },
   {
     name: "Luisa Guimarães",
     role: "Estratégia & Negócios",
     desc: "Visão empreendedora e modelo B2B2C.",
-    linkedin: "#"
+    linkedin: "https://www.linkedin.com/in/luisa-veras-de-sandes-guimar%C3%A3es-85820086/"
   },
   {
     name: "Filipe Zanovello",
-    role: "Tecnologia",
+    role: "Expertise Clínica",
     desc: "Desenvolvimento e arquitetura de software.",
     linkedin: "https://www.linkedin.com/in/filipezanovello/"
   },

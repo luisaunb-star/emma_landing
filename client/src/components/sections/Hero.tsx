@@ -28,9 +28,7 @@ export default function Hero() {
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold leading-tight text-emma-text">
             Monitoramento preciso, <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emma-primary to-emma-text">cuidado humano</span>:
-            <br />
-            a evolução do tratamento da Esclerose Múltipla.
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emma-primary to-emma-text">cuidado humano.</span>
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
@@ -81,9 +79,9 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative"
+          className="relative flex justify-center lg:justify-end"
         >
-          <div className="relative z-10 glass-card p-6 md:p-8 max-w-md mx-auto rotate-[-2deg] hover:rotate-0 transition-transform duration-500">
+          <div className="relative z-10 glass-card p-6 md:p-8 w-full max-w-[320px] md:max-w-sm mx-auto lg:mx-0 rotate-[-2deg] hover:rotate-0 transition-transform duration-500">
             <div className="absolute -top-6 -right-6 w-24 h-24 bg-emma-gold rounded-full flex items-center justify-center shadow-lg animate-bounce" style={{ animationDuration: '3s' }}>
               <span className="font-bold text-emma-text text-xs text-center leading-tight">Jornada<br/>Gamificada</span>
             </div>
