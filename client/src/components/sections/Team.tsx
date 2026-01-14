@@ -36,7 +36,7 @@ const team = [
   {
     name: "Filipe Zanovello",
     role: "Expertise Clínica",
-    desc: "Desenvolvimento e arquitetura de software.",
+    desc: "Especialista em neurologia e validação científica.",
     linkedin: "https://www.linkedin.com/in/filipezanovello/"
   },
   {

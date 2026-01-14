@@ -30,3 +30,7 @@
 - [x] **Aviso de LGPD:**
     - [x] Adicionar disclaimer na interface do chat informando que dados não são armazenados.
     - [x] Incluir mensagem de privacidade na primeira interação da Emma.
+
+
+## Ajuste Final - Time
+- [x] Atualizar descrição do Filipe Zanovello para perfil clínico (similar ao Ricardo)
