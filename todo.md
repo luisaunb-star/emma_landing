@@ -37,3 +37,6 @@
 ## Correções Adicionais - Dashboard
 - [x] Corrigir overflow persistente nos badges do painel de pacientes (telas amplas)
 - [x] Implementar gráfico dual axis (SDMT no eixo esquerdo, 9-Hole Peg no eixo direito)
+
+## Correção Final - Overflow Vertical
+- [x] Corrigir overflow vertical do painel de pacientes (conteúdo estourando para baixo do card)

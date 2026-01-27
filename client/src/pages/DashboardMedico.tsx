@@ -153,13 +153,13 @@ export default function DashboardMedico() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Sidebar: Lista de Pacientes */}
           <div className="lg:col-span-3">
-            <Card className="h-auto lg:h-[calc(100vh-180px)]">
-              <CardHeader className="pb-3">
+            <Card className="h-auto lg:h-[calc(100vh-180px)] flex flex-col">
+              <CardHeader className="pb-3 shrink-0">
                 <CardTitle className="text-base">Pacientes</CardTitle>
                 <CardDescription>Clique para visualizar detalhes</CardDescription>
               </CardHeader>
-              <CardContent className="p-0">
-                <ScrollArea className="h-auto lg:h-[calc(100vh-280px)] px-4 pb-4">
+              <CardContent className="p-0 flex-1 overflow-hidden">
+                <ScrollArea className="h-full px-4 pb-4">
                   <div className="space-y-2">
                     {mockPatients.map((patient) => (
                       <button
