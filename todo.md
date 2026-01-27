@@ -93,3 +93,7 @@
 ## Correção de Dados do Time
 - [x] Corrigir nome: João Paulo → João Pedro Nardari
 - [x] Atualizar áreas de atuação: Médico + IA
+
+## Ajuste de Áreas de Atuação - João Pedro
+- [x] Incluir "Desenvolvimento" nas áreas de atuação
+- [x] Usar formato consistente com "&": Médico, IA & Dev
