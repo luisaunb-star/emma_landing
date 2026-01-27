@@ -6,6 +6,8 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import Chat from "./pages/Chat";
+import LoginMedico from "./pages/LoginMedico";
+import DashboardMedico from "./pages/DashboardMedico";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -13,6 +15,8 @@ function Router() {
     <Switch>
       <Route path={"/"} component={Home} />
       <Route path={"/chat"} component={Chat} />
+      <Route path={"/login-medico"} component={LoginMedico} />
+      <Route path={"/dashboard-medico"} component={DashboardMedico} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

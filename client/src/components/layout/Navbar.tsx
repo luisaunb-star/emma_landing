@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, MessageCircle, Bot } from "lucide-react";
+import { Menu, X, MessageCircle, Bot, User } from "lucide-react";
 import Logo from "@/components/ui/Logo";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -63,6 +63,15 @@ export default function Navbar() {
               {link.name}
             </a>
           ))}
+          <Link href="/login-medico">
+            <Button
+              variant="outline"
+              className="border-emma-primary text-emma-primary hover:bg-emma-primary/10 gap-2"
+            >
+              <User className="w-4 h-4" />
+              Login Médico
+            </Button>
+          </Link>
           <Link href="/chat">
             <div className="cursor-pointer">
               <Button className="bg-emma-primary hover:bg-emma-primary/90 text-white rounded-full pl-2 pr-6 gap-3 h-12">
