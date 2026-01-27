@@ -83,3 +83,9 @@
 - [x] Geração de relatórios estruturados (JSON/CSV)
 - [x] Templates para ANVISA e FDA
 - [x] Documentação de metadados e conformidade LGPD
+
+## Simplificação do Menu Superior
+- [x] Reduzir itens do menu de 7 para 4 + CTA
+- [x] Criar dropdown "Soluções" (Para Pacientes, Para Médicos, Para Farmacêuticas)
+- [x] Criar dropdown "Login" (Login Médico, Login Farmacêutica)
+- [x] Manter itens: Produto, Time, Falar com Emma
