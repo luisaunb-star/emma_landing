@@ -83,11 +83,11 @@ export default function DashboardMedico() {
   const getAlertColor = (level: AlertLevel) => {
     switch (level) {
       case "green":
-        return "bg-green-100 text-green-800 border-green-300";
+        return "bg-emerald-50 text-emerald-700";
       case "yellow":
-        return "bg-yellow-100 text-yellow-800 border-yellow-300";
+        return "bg-amber-50 text-amber-700";
       case "red":
-        return "bg-red-100 text-red-800 border-red-300";
+        return "bg-rose-50 text-rose-700";
     }
   };
 
@@ -166,30 +166,30 @@ export default function DashboardMedico() {
                         key={patient.id}
                         onClick={() => setSelectedPatient(patient)}
                         className={cn(
-                          "w-full text-left p-3 rounded-lg border-2 transition-all hover:shadow-md",
+                          "w-full text-left p-4 rounded-lg transition-all",
                           selectedPatient?.id === patient.id
-                            ? "border-emma-primary bg-purple-50"
-                            : "border-gray-200 bg-white hover:border-gray-300"
+                            ? "bg-purple-50 shadow-md border border-purple-200"
+                            : "bg-white shadow-sm hover:shadow-md border border-gray-100"
                         )}
                       >
-                        <div className="space-y-2">
+                        <div className="space-y-3">
                           <div className="flex flex-col gap-2">
                             <div className="flex-1 min-w-0">
-                              <p className="font-semibold text-sm text-emma-text truncate">
+                              <p className="font-semibold text-base text-gray-900 truncate">
                                 {patient.name}
                               </p>
-                              <p className="text-xs text-muted-foreground">
+                              <p className="text-sm text-gray-500">
                                 {patient.age} anos
                               </p>
                             </div>
-                            <div className="flex items-center justify-between gap-2">
-                              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                            <div className="flex items-center justify-between gap-2 pt-2">
+                              <div className="flex items-center gap-2 text-sm text-gray-600">
                                 <span className="font-medium">EDSS:</span>
-                                <span>{patient.edss}</span>
+                                <span className="font-semibold">{patient.edss}</span>
                               </div>
                               <Badge
                                 variant="outline"
-                                className={cn("gap-1 text-xs shrink-0 whitespace-nowrap", getAlertColor(patient.alertLevel))}
+                                className={cn("gap-1.5 text-xs shrink-0 whitespace-nowrap border-0", getAlertColor(patient.alertLevel))}
                               >
                                 {getAlertIcon(patient.alertLevel)}
                                 <span>{getAlertText(patient.alertLevel)}</span>
@@ -219,7 +219,7 @@ export default function DashboardMedico() {
                   </div>
                   <Badge
                     variant="outline"
-                    className={cn("gap-2 text-sm px-3 py-1", getAlertColor(selectedPatient.alertLevel))}
+                    className={cn("gap-2 text-sm px-4 py-1.5 border-0 font-medium", getAlertColor(selectedPatient.alertLevel))}
                   >
                     {getAlertIcon(selectedPatient.alertLevel)}
                     {getAlertText(selectedPatient.alertLevel)}
@@ -227,22 +227,22 @@ export default function DashboardMedico() {
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <div className="text-center p-4 bg-gray-50 rounded-lg">
-                    <p className="text-sm text-muted-foreground">EDSS Atual</p>
-                    <p className="text-3xl font-bold text-emma-primary mt-1">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                  <div className="text-center p-6 bg-gradient-to-br from-purple-50 to-white rounded-xl border border-purple-100 shadow-sm">
+                    <p className="text-sm font-medium text-gray-600 mb-2">EDSS Atual</p>
+                    <p className="text-4xl font-bold text-purple-600">
                       {selectedPatient.edss}
                     </p>
                   </div>
-                  <div className="text-center p-4 bg-gray-50 rounded-lg">
-                    <p className="text-sm text-muted-foreground">Última Avaliação</p>
-                    <p className="text-lg font-semibold text-emma-text mt-1">
+                  <div className="text-center p-6 bg-gradient-to-br from-gray-50 to-white rounded-xl border border-gray-100 shadow-sm">
+                    <p className="text-sm font-medium text-gray-600 mb-2">Última Avaliação</p>
+                    <p className="text-lg font-semibold text-gray-900 mt-1">
                       {new Date(selectedPatient.lastUpdate).toLocaleDateString("pt-BR")}
                     </p>
                   </div>
-                  <div className="text-center p-4 bg-gray-50 rounded-lg">
-                    <p className="text-sm text-muted-foreground">Condutas Registradas</p>
-                    <p className="text-3xl font-bold text-emma-text mt-1">
+                  <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-white rounded-xl border border-blue-100 shadow-sm">
+                    <p className="text-sm font-medium text-gray-600 mb-2">Condutas Registradas</p>
+                    <p className="text-4xl font-bold text-blue-600">
                       {selectedPatient.condutas.length}
                     </p>
                   </div>
@@ -291,17 +291,17 @@ export default function DashboardMedico() {
                         type="monotone"
                         dataKey="SDMT"
                         stroke="#9370DB"
-                        strokeWidth={2}
-                        dot={{ r: 4 }}
+                        strokeWidth={2.5}
+                        dot={{ r: 4, fill: "#9370DB" }}
                         name="SDMT (símbolos)"
                       />
                       <Line
                         yAxisId="right"
                         type="monotone"
                         dataKey="9-Hole Peg (s)"
-                        stroke="#FFD700"
-                        strokeWidth={2}
-                        dot={{ r: 4 }}
+                        stroke="#FCD34D"
+                        strokeWidth={2.5}
+                        dot={{ r: 4, fill: "#FCD34D" }}
                         name="9-Hole Peg (segundos)"
                       />
                     </LineChart>
@@ -334,9 +334,9 @@ export default function DashboardMedico() {
                       <Line
                         type="monotone"
                         dataKey="EDSS"
-                        stroke="#FF6B6B"
-                        strokeWidth={3}
-                        dot={{ r: 5 }}
+                        stroke="#EF4444"
+                        strokeWidth={2.5}
+                        dot={{ r: 4, fill: "#EF4444" }}
                       />
                     </LineChart>
                   </ResponsiveContainer>
@@ -347,30 +347,30 @@ export default function DashboardMedico() {
             {/* Painéis de Biomarcadores */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Eye-Tracking */}
-              <Card>
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-base flex items-center gap-2">
-                    <Eye className="w-4 h-4 text-emma-primary" />
+              <Card className="border-purple-100 shadow-sm">
+                <CardHeader className="pb-4 bg-gradient-to-br from-purple-50 to-white">
+                  <CardTitle className="text-base flex items-center gap-2 text-gray-900">
+                    <Eye className="w-5 h-5 text-purple-600" />
                     Eye-Tracking
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-3">
+                <CardContent className="space-y-4 pt-6">
                   <div>
-                    <p className="text-xs text-muted-foreground">Latência Sacádica</p>
-                    <p className="text-2xl font-bold text-emma-text">
-                      {selectedPatient.biomarcadores.eyeTracking.latenciaSacadica} ms
+                    <p className="text-sm font-medium text-gray-600 mb-2">Latência Sacádica</p>
+                    <p className="text-3xl font-bold text-purple-600">
+                      {selectedPatient.biomarcadores.eyeTracking.latenciaSacadica} <span className="text-lg text-gray-500">ms</span>
                     </p>
-                    <p className="text-xs text-muted-foreground mt-1">
+                    <p className="text-xs text-gray-500 mt-1.5">
                       Normal: 150-200 ms
                     </p>
                   </div>
-                  <Separator />
+                  <Separator className="my-4" />
                   <div>
-                    <p className="text-xs text-muted-foreground">Estabilidade de Fixação</p>
-                    <p className="text-2xl font-bold text-emma-text">
-                      {selectedPatient.biomarcadores.eyeTracking.estabilidadeFixacao}%
+                    <p className="text-sm font-medium text-gray-600 mb-2">Estabilidade de Fixação</p>
+                    <p className="text-3xl font-bold text-purple-600">
+                      {selectedPatient.biomarcadores.eyeTracking.estabilidadeFixacao}<span className="text-lg text-gray-500">%</span>
                     </p>
-                    <p className="text-xs text-muted-foreground mt-1">
+                    <p className="text-xs text-gray-500 mt-1.5">
                       Normal: &gt;90%
                     </p>
                   </div>
@@ -378,30 +378,30 @@ export default function DashboardMedico() {
               </Card>
 
               {/* Vocal */}
-              <Card>
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-base flex items-center gap-2">
-                    <Mic className="w-4 h-4 text-emma-primary" />
+              <Card className="border-blue-100 shadow-sm">
+                <CardHeader className="pb-4 bg-gradient-to-br from-blue-50 to-white">
+                  <CardTitle className="text-base flex items-center gap-2 text-gray-900">
+                    <Mic className="w-5 h-5 text-blue-600" />
                     Análise Vocal
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-3">
+                <CardContent className="space-y-4 pt-6">
                   <div>
-                    <p className="text-xs text-muted-foreground">Jitter</p>
-                    <p className="text-2xl font-bold text-emma-text">
-                      {selectedPatient.biomarcadores.vocal.jitter}%
+                    <p className="text-sm font-medium text-gray-600 mb-2">Jitter</p>
+                    <p className="text-3xl font-bold text-blue-600">
+                      {selectedPatient.biomarcadores.vocal.jitter}<span className="text-lg text-gray-500">%</span>
                     </p>
-                    <p className="text-xs text-muted-foreground mt-1">
+                    <p className="text-xs text-gray-500 mt-1.5">
                       Normal: &lt;1.0%
                     </p>
                   </div>
-                  <Separator />
+                  <Separator className="my-4" />
                   <div>
-                    <p className="text-xs text-muted-foreground">Shimmer</p>
-                    <p className="text-2xl font-bold text-emma-text">
-                      {selectedPatient.biomarcadores.vocal.shimmer}%
+                    <p className="text-sm font-medium text-gray-600 mb-2">Shimmer</p>
+                    <p className="text-3xl font-bold text-blue-600">
+                      {selectedPatient.biomarcadores.vocal.shimmer}<span className="text-lg text-gray-500">%</span>
                     </p>
-                    <p className="text-xs text-muted-foreground mt-1">
+                    <p className="text-xs text-gray-500 mt-1.5">
                       Normal: &lt;3.5%
                     </p>
                   </div>
@@ -409,30 +409,30 @@ export default function DashboardMedico() {
               </Card>
 
               {/* Motor */}
-              <Card>
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-base flex items-center gap-2">
-                    <Activity className="w-4 h-4 text-emma-primary" />
+              <Card className="border-green-100 shadow-sm">
+                <CardHeader className="pb-4 bg-gradient-to-br from-green-50 to-white">
+                  <CardTitle className="text-base flex items-center gap-2 text-gray-900">
+                    <Activity className="w-5 h-5 text-green-600" />
                     Motor
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-3">
+                <CardContent className="space-y-4 pt-6">
                   <div>
-                    <p className="text-xs text-muted-foreground">Equilíbrio</p>
-                    <p className="text-2xl font-bold text-emma-text">
-                      {selectedPatient.biomarcadores.motor.equilibrio}/100
+                    <p className="text-sm font-medium text-gray-600 mb-2">Equilíbrio</p>
+                    <p className="text-3xl font-bold text-green-600">
+                      {selectedPatient.biomarcadores.motor.equilibrio}<span className="text-lg text-gray-500">/100</span>
                     </p>
-                    <p className="text-xs text-muted-foreground mt-1">
+                    <p className="text-xs text-gray-500 mt-1.5">
                       Normal: &gt;80
                     </p>
                   </div>
-                  <Separator />
+                  <Separator className="my-4" />
                   <div>
-                    <p className="text-xs text-muted-foreground">Velocidade de Marcha</p>
-                    <p className="text-2xl font-bold text-emma-text">
-                      {selectedPatient.biomarcadores.motor.marcha} m/s
+                    <p className="text-sm font-medium text-gray-600 mb-2">Velocidade de Marcha</p>
+                    <p className="text-3xl font-bold text-green-600">
+                      {selectedPatient.biomarcadores.motor.marcha} <span className="text-lg text-gray-500">m/s</span>
                     </p>
-                    <p className="text-xs text-muted-foreground mt-1">
+                    <p className="text-xs text-gray-500 mt-1.5">
                       Normal: &gt;1.2 m/s
                     </p>
                   </div>

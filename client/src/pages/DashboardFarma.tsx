@@ -123,14 +123,14 @@ export default function DashboardFarma() {
 
   const getCriticalityColor = (level: CriticalityLevel) => {
     switch (level) {
-      case "excellent":
-        return "bg-green-100 text-green-800 border-green-300";
-      case "stable":
-        return "bg-blue-100 text-blue-800 border-blue-300";
-      case "attention":
-        return "bg-yellow-100 text-yellow-800 border-yellow-300";
       case "critical":
-        return "bg-red-100 text-red-800 border-red-300";
+        return "bg-rose-50 text-rose-700";
+      case "attention":
+        return "bg-amber-50 text-amber-700";
+      case "stable":
+        return "bg-blue-50 text-blue-700";
+      case "excellent":
+        return "bg-emerald-50 text-emerald-700";
     }
   };
 
@@ -197,10 +197,10 @@ export default function DashboardFarma() {
 
   // Dados para gráfico de distribuição de criticidade
   const criticalityDistribution = [
-    { name: "Crítico", value: mockCohortKPIs.criticalPatients, color: "#EF4444" },
-    { name: "Atenção", value: mockCohortKPIs.attentionPatients, color: "#F59E0B" },
-    { name: "Estável", value: mockCohortKPIs.stablePatients, color: "#3B82F6" },
-    { name: "Excelente", value: mockCohortKPIs.excellentPatients, color: "#10B981" },
+    { name: "Crítico", value: mockCohortKPIs.criticalPatients, color: "#FCA5A5" },
+    { name: "Atenção", value: mockCohortKPIs.attentionPatients, color: "#FCD34D" },
+    { name: "Estável", value: mockCohortKPIs.stablePatients, color: "#93C5FD" },
+    { name: "Excelente", value: mockCohortKPIs.excellentPatients, color: "#86EFAC" },
   ];
 
   // Dados para gráfico de distribuição de biomarcadores
@@ -244,63 +244,63 @@ export default function DashboardFarma() {
       <div className="container py-6 space-y-6">
         {/* KPIs da Coorte */}
         <div>
-          <h2 className="text-2xl font-bold text-emma-text mb-4">Sumário da Coorte</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
-                  <Users className="w-4 h-4" />
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Sumário da Coorte</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Card className="border-gray-100 shadow-sm">
+              <CardHeader className="pb-4 bg-gradient-to-br from-purple-50 to-white">
+                <CardTitle className="text-sm font-semibold text-gray-600 flex items-center gap-2">
+                  <Users className="w-5 h-5 text-purple-600" />
                   Total de Pacientes
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-3xl font-bold text-emma-text">{mockCohortKPIs.totalPatients}</p>
-                <p className="text-xs text-muted-foreground mt-1">No programa PSP</p>
+              <CardContent className="pt-4">
+                <p className="text-4xl font-bold text-purple-600">{mockCohortKPIs.totalPatients}</p>
+                <p className="text-sm text-gray-500 mt-2">No programa PSP</p>
               </CardContent>
             </Card>
 
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
-                  <Activity className="w-4 h-4" />
+            <Card className="border-gray-100 shadow-sm">
+              <CardHeader className="pb-4 bg-gradient-to-br from-green-50 to-white">
+                <CardTitle className="text-sm font-semibold text-gray-600 flex items-center gap-2">
+                  <Activity className="w-5 h-5 text-green-600" />
                   Taxa de Adesão
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-3xl font-bold text-emma-accent">
+              <CardContent className="pt-4">
+                <p className="text-4xl font-bold text-green-600">
                   {mockCohortKPIs.adherenceRate.toFixed(1)}%
                 </p>
-                <p className="text-xs text-muted-foreground mt-1">Média da coorte</p>
+                <p className="text-sm text-gray-500 mt-2">Média da coorte</p>
               </CardContent>
             </Card>
 
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
-                  <TrendingUp className="w-4 h-4" />
+            <Card className="border-gray-100 shadow-sm">
+              <CardHeader className="pb-4 bg-gradient-to-br from-blue-50 to-white">
+                <CardTitle className="text-sm font-semibold text-gray-600 flex items-center gap-2">
+                  <TrendingUp className="w-5 h-5 text-blue-600" />
                   Engajamento Diário
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-3xl font-bold text-emma-primary">
+              <CardContent className="pt-4">
+                <p className="text-4xl font-bold text-blue-600">
                   {mockCohortKPIs.dailyEngagement.toFixed(1)}%
                 </p>
-                <p className="text-xs text-muted-foreground mt-1">Testes gamificados</p>
+                <p className="text-sm text-gray-500 mt-2">Testes gamificados</p>
               </CardContent>
             </Card>
 
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
-                  <AlertTriangle className="w-4 h-4" />
+            <Card className="border-gray-100 shadow-sm">
+              <CardHeader className="pb-4 bg-gradient-to-br from-rose-50 to-white">
+                <CardTitle className="text-sm font-semibold text-gray-600 flex items-center gap-2">
+                  <AlertTriangle className="w-5 h-5 text-rose-600" />
                   Eventos Adversos
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-3xl font-bold text-red-600">
+              <CardContent className="pt-4">
+                <p className="text-4xl font-bold text-rose-600">
                   {mockCohortKPIs.adverseEventsUnresolved}
                 </p>
-                <p className="text-xs text-muted-foreground mt-1">
+                <p className="text-sm text-gray-500 mt-2">
                   Não resolvidos (Total: {mockCohortKPIs.adverseEventsTotal})
                 </p>
               </CardContent>
@@ -309,10 +309,10 @@ export default function DashboardFarma() {
         </div>
 
         {/* Distribuição de Criticidade */}
-        <Card>
+        <Card className="border-gray-100 shadow-sm">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Activity className="w-5 h-5 text-emma-primary" />
+            <CardTitle className="flex items-center gap-2 text-gray-900">
+              <Activity className="w-5 h-5 text-purple-600" />
               Distribuição de Criticidade
             </CardTitle>
             <CardDescription>Classificação dos pacientes por nível de prioridade PSP</CardDescription>
@@ -341,10 +341,10 @@ export default function DashboardFarma() {
         </Card>
 
         {/* Lista Priorizada de Pacientes */}
-        <Card>
+        <Card className="border-gray-100 shadow-sm">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Users className="w-5 h-5 text-emma-primary" />
+            <CardTitle className="flex items-center gap-2 text-gray-900">
+              <Users className="w-5 h-5 text-purple-600" />
               Lista Priorizada de Pacientes PSP
             </CardTitle>
             <CardDescription>
@@ -359,28 +359,28 @@ export default function DashboardFarma() {
                     key={patient.id}
                     onClick={() => setSelectedPatient(patient)}
                     className={cn(
-                      "w-full text-left p-4 rounded-lg border-2 transition-all hover:shadow-md",
+                      "w-full text-left p-5 rounded-lg transition-all",
                       selectedPatient?.id === patient.id
-                        ? "border-emma-accent bg-green-50"
-                        : "border-gray-200 bg-white hover:border-gray-300"
+                        ? "bg-purple-50 shadow-md border border-purple-200"
+                        : "bg-white shadow-sm hover:shadow-md border border-gray-100"
                     )}
                   >
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex-1 min-w-0">
-                          <p className="font-semibold text-base text-emma-text">{patient.name}</p>
-                          <p className="text-sm text-muted-foreground">
+                          <p className="font-semibold text-base text-gray-900">{patient.name}</p>
+                          <p className="text-sm text-gray-600 mt-1">
                             {patient.age} anos • {patient.gender === "M" ? "Masculino" : "Feminino"} •{" "}
                             {patient.diagnosis}
                           </p>
-                          <p className="text-sm text-muted-foreground">
-                            Medicamento: <span className="font-medium">{patient.medication}</span>
+                          <p className="text-sm text-gray-600 mt-0.5">
+                            Medicamento: <span className="font-medium text-gray-900">{patient.medication}</span>
                           </p>
                         </div>
                         <Badge
                           variant="outline"
                           className={cn(
-                            "gap-1 text-xs shrink-0 whitespace-nowrap",
+                            "gap-1.5 text-xs shrink-0 whitespace-nowrap border-0 font-medium",
                             getCriticalityColor(patient.criticalityLevel)
                           )}
                         >
@@ -389,22 +389,22 @@ export default function DashboardFarma() {
                         </Badge>
                       </div>
 
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
-                        <div className="bg-gray-50 p-2 rounded">
-                          <p className="text-muted-foreground">Adesão</p>
-                          <p className="font-semibold text-emma-text">{patient.adherenceRate}%</p>
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+                        <div className="bg-gradient-to-br from-green-50 to-white p-3 rounded-lg border border-green-100">
+                          <p className="text-gray-600 text-xs mb-1">Adesão</p>
+                          <p className="font-bold text-green-600">{patient.adherenceRate}%</p>
                         </div>
-                        <div className="bg-gray-50 p-2 rounded">
-                          <p className="text-muted-foreground">Engajamento</p>
-                          <p className="font-semibold text-emma-text">{patient.dailyEngagement}%</p>
+                        <div className="bg-gradient-to-br from-blue-50 to-white p-3 rounded-lg border border-blue-100">
+                          <p className="text-gray-600 text-xs mb-1">Engajamento</p>
+                          <p className="font-bold text-blue-600">{patient.dailyEngagement}%</p>
                         </div>
-                        <div className="bg-gray-50 p-2 rounded">
-                          <p className="text-muted-foreground">EDSS</p>
-                          <p className="font-semibold text-emma-text">{patient.biomarcadores.edss}</p>
+                        <div className="bg-gradient-to-br from-purple-50 to-white p-3 rounded-lg border border-purple-100">
+                          <p className="text-gray-600 text-xs mb-1">EDSS</p>
+                          <p className="font-bold text-purple-600">{patient.biomarcadores.edss}</p>
                         </div>
-                        <div className="bg-gray-50 p-2 rounded">
-                          <p className="text-muted-foreground">Último Teste</p>
-                          <p className="font-semibold text-emma-text">
+                        <div className="bg-gradient-to-br from-gray-50 to-white p-3 rounded-lg border border-gray-100">
+                          <p className="text-gray-600 text-xs mb-1">Último Teste</p>
+                          <p className="font-bold text-gray-900">
                             {new Date(patient.lastTestDate).toLocaleDateString("pt-BR", {
                               day: "2-digit",
                               month: "2-digit",

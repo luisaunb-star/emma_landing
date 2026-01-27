@@ -66,7 +66,7 @@ export default function Product() {
 
         <div className="mt-24 bg-emma-bg rounded-[3rem] p-8 md:p-12 lg:p-16 flex flex-col lg:flex-row items-center gap-12 border border-border/50">
           <div className="flex-1 space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emma-gold/20 text-yellow-700 text-sm font-bold">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-100 text-yellow-700 text-sm font-bold">
               <Gamepad2 className="w-4 h-4" />
               Gamificação Científica
             </div>
@@ -83,7 +83,7 @@ export default function Product() {
                 "Feedback imediato e positivo para o paciente"
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-full bg-emma-success flex items-center justify-center text-green-800 text-xs font-bold">✓</div>
+                  <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-green-800 text-xs font-bold">✓</div>
                   <span className="text-emma-text font-medium">{item}</span>
                 </li>
               ))}
@@ -104,7 +104,7 @@ export default function Product() {
                   <span className="text-xs font-bold text-emma-primary bg-emma-secondary px-2 py-1 rounded-md">Nível 5</span>
                 </div>
                 <div className="h-32 bg-gray-100 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden">
-                  <div className="absolute w-8 h-8 bg-emma-gold rounded-full shadow-lg animate-bounce" style={{ left: '40%', top: '30%' }}></div>
+                  <div className="absolute w-8 h-8 bg-yellow-400 rounded-full shadow-lg animate-bounce" style={{ left: '40%', top: '30%' }}></div>
                   <div className="absolute w-16 h-2 bg-emma-text rounded-full bottom-4 left-1/4"></div>
                 </div>
                 <div className="flex justify-between items-center">

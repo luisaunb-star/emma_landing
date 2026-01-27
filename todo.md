@@ -83,3 +83,34 @@
 - [x] Geração de relatórios estruturados (JSON/CSV)
 - [x] Templates para ANVISA e FDA
 - [x] Documentação de metadados e conformidade LGPD
+
+## Redesign Profissional - Dashboards Médico e Farmacêutico
+
+### Pesquisa e Planejamento
+- [x] Pesquisar referências de plataformas profissionais (Epic, Veeva, Dribbble)
+- [x] Documentar padrões visuais e diretrizes de design profissional
+- [x] Definir nova paleta de cores profissional mantendo identidade Emma
+
+### Dashboard Médico - Redesign
+- [x] Atualizar paleta de cores (reduzir saturação, tons pastéis)
+- [x] Redesenhar cards de pacientes (remover borders coloridos, adicionar sombras sutis)
+- [x] Melhorar badges de status (cores pastéis, tamanho reduzido)
+- [x] Refinar gráficos SDMT e 9-Hole (máximo 2 cores, tons suaves)
+- [x] Aumentar espaçamento (padding, gaps, whitespace)
+- [x] Melhorar hierarquia tipográfica (tamanhos e pesos variados)
+- [x] Redesenhar cards de biomarcadores (layout mais limpo)
+
+### Dashboard Farmacêutico - Redesign
+- [x] Atualizar KPIs (cores mais neutras, ícones discretos)
+- [x] Redesenhar gráfico de distribuição de criticidade (cores suaves)
+- [x] Melhorar lista de pacientes PSP (menos cores, mais whitespace)
+- [x] Refinar gráficos agregados (SDMT, 9-Hole, EDSS com cores consistentes)
+- [x] Redesenhar módulo de farmacovigilância (menos alarming, mais profissional)
+- [x] Melhorar painel RWE (layout mais corporativo)
+- [x] Aumentar espaçamento geral do dashboard
+
+### Elementos Globais
+- [x] Atualizar componentes compartilhados (Card, Badge, Button)
+- [x] Refinar sistema de cores no index.css
+- [x] Garantir consistência visual entre dashboards
+- [x] Testar responsividade com novo design
