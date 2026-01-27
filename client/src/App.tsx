@@ -8,6 +8,8 @@ import Home from "./pages/Home";
 import Chat from "./pages/Chat";
 import LoginMedico from "./pages/LoginMedico";
 import DashboardMedico from "./pages/DashboardMedico";
+import LoginFarma from "./pages/LoginFarma";
+import DashboardFarma from "./pages/DashboardFarma";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -17,6 +19,8 @@ function Router() {
       <Route path={"/chat"} component={Chat} />
       <Route path={"/login-medico"} component={LoginMedico} />
       <Route path={"/dashboard-medico"} component={DashboardMedico} />
+      <Route path={"/login-farma"} component={LoginFarma} />
+      <Route path={"/dashboard-farma"} component={DashboardFarma} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

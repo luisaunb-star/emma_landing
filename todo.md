@@ -40,3 +40,46 @@
 
 ## Correção Final - Overflow Vertical
 - [x] Corrigir overflow vertical do painel de pacientes (conteúdo estourando para baixo do card)
+
+## Dashboard Farmacêutico - Real-World Evidence (RWE)
+
+### Fase 1: Autenticação
+- [x] Adicionar botão "Login Farmacêutica" no header (Navbar.tsx)
+- [x] Criar página de login farmacêutico (`/login-farma`)
+- [x] Implementar lógica de autenticação (credenciais: farma@emma.com.br / emma2025)
+- [x] Criar rota protegida para dashboard farmacêutico (`/dashboard-farma`)
+
+### Fase 2: Dados Mockados
+- [x] Criar arquivo de dados mockados para coorte farmacêutica
+- [x] Incluir dados agregados de biomarcadores
+- [x] Adicionar histórico de contatos PSP por paciente
+- [x] Criar dados de alertas de farmacovigilância
+
+### Fase 3: KPIs e Sumário da Coorte
+- [x] Implementar cards de KPIs (total pacientes, adesão, engajamento)
+- [x] Criar visualização de tendências temporais dos KPIs
+- [x] Adicionar filtros por período e medicamento
+
+### Fase 4: Lista Priorizada de Pacientes PSP
+- [x] Criar tabela de pacientes ordenada por criticidade
+- [x] Implementar sistema de registro de contatos (telefone/WhatsApp)
+- [x] Adicionar modal para registrar detalhes do contato
+- [x] Mostrar histórico de interações PSP por paciente
+
+### Fase 5: Monitoramento de Eficácia
+- [x] Gráficos agregados de SDMT e 9-Hole Peg (distribuição da coorte)
+- [x] Gráficos de biomarcadores digitais (eye-tracking, vocal, motor)
+- [x] Comparação com valores de referência normais
+- [x] Visualização de evolução temporal agregada
+
+### Fase 6: Módulo de Farmacovigilância
+- [x] Painel de alertas de surtos/progressão silenciosa
+- [x] Sistema de detecção de eventos adversos
+- [x] Dashboard de sinais de segurança
+- [x] Funcionalidade de triagem e priorização de casos
+
+### Fase 7: Painel RWE e Exportação
+- [x] Interface de seleção de dados para exportação
+- [x] Geração de relatórios estruturados (JSON/CSV)
+- [x] Templates para ANVISA e FDA
+- [x] Documentação de metadados e conformidade LGPD

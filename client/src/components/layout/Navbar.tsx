@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, MessageCircle, Bot, User } from "lucide-react";
+import { Menu, X, MessageCircle, Bot, User, Building2 } from "lucide-react";
 import Logo from "@/components/ui/Logo";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -72,6 +72,15 @@ export default function Navbar() {
               Login Médico
             </Button>
           </Link>
+          <Link href="/login-farma">
+            <Button
+              variant="outline"
+              className="border-emma-accent text-emma-accent hover:bg-emma-accent/10 gap-2"
+            >
+              <Building2 className="w-4 h-4" />
+              Login Farmacêutica
+            </Button>
+          </Link>
           <Link href="/chat">
             <div className="cursor-pointer">
               <Button className="bg-emma-primary hover:bg-emma-primary/90 text-white rounded-full pl-2 pr-6 gap-3 h-12">
@@ -106,6 +115,18 @@ export default function Navbar() {
               {link.name}
             </a>
           ))}
+          <Link href="/login-medico">
+            <Button variant="outline" className="w-full border-emma-primary text-emma-primary hover:bg-emma-primary/10 gap-2">
+              <User className="w-4 h-4" />
+              Login Médico
+            </Button>
+          </Link>
+          <Link href="/login-farma">
+            <Button variant="outline" className="w-full border-emma-accent text-emma-accent hover:bg-emma-accent/10 gap-2">
+              <Building2 className="w-4 h-4" />
+              Login Farmacêutica
+            </Button>
+          </Link>
           <Link href="/chat">
             <Button className="w-full bg-emma-primary hover:bg-emma-primary/90 text-white rounded-xl gap-3 mt-2 h-12 justify-start pl-4">
               <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border-2 border-white/50">
