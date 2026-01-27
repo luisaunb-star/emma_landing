@@ -32,3 +32,8 @@
 - [x] Ajustar responsividade da lista de pacientes (badges visíveis em todas as resoluções)
 - [x] Separar gráficos: SDMT + 9-Hole Peg em um, EDSS em outro
 - [x] Adicionar legendas explicativas sobre as escalas dos testes
+
+
+## Correções Adicionais - Dashboard
+- [x] Corrigir overflow persistente nos badges do painel de pacientes (telas amplas)
+- [x] Implementar gráfico dual axis (SDMT no eixo esquerdo, 9-Hole Peg no eixo direito)

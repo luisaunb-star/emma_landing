@@ -173,7 +173,7 @@ export default function DashboardMedico() {
                         )}
                       >
                         <div className="space-y-2">
-                          <div className="flex items-start justify-between gap-2">
+                          <div className="flex flex-col gap-2">
                             <div className="flex-1 min-w-0">
                               <p className="font-semibold text-sm text-emma-text truncate">
                                 {patient.name}
@@ -182,17 +182,19 @@ export default function DashboardMedico() {
                                 {patient.age} anos
                               </p>
                             </div>
-                            <Badge
-                              variant="outline"
-                              className={cn("gap-1 text-xs shrink-0", getAlertColor(patient.alertLevel))}
-                            >
-                              {getAlertIcon(patient.alertLevel)}
-                              <span className="hidden sm:inline">{getAlertText(patient.alertLevel)}</span>
-                            </Badge>
-                          </div>
-                          <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                            <span className="font-medium">EDSS:</span>
-                            <span>{patient.edss}</span>
+                            <div className="flex items-center justify-between gap-2">
+                              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                                <span className="font-medium">EDSS:</span>
+                                <span>{patient.edss}</span>
+                              </div>
+                              <Badge
+                                variant="outline"
+                                className={cn("gap-1 text-xs shrink-0 whitespace-nowrap", getAlertColor(patient.alertLevel))}
+                              >
+                                {getAlertIcon(patient.alertLevel)}
+                                <span>{getAlertText(patient.alertLevel)}</span>
+                              </Badge>
+                            </div>
                           </div>
                         </div>
                       </button>
@@ -269,22 +271,38 @@ export default function DashboardMedico() {
                     <LineChart data={cognitiveMotorData}>
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="date" tick={{ fontSize: 11 }} />
-                      <YAxis tick={{ fontSize: 11 }} />
+                      <YAxis 
+                        yAxisId="left"
+                        tick={{ fontSize: 11 }}
+                        label={{ value: 'SDMT', angle: -90, position: 'insideLeft', style: { fontSize: 11 } }}
+                        domain={[0, 110]}
+                      />
+                      <YAxis 
+                        yAxisId="right"
+                        orientation="right"
+                        tick={{ fontSize: 11 }}
+                        label={{ value: '9-Hole Peg (s)', angle: 90, position: 'insideRight', style: { fontSize: 11 } }}
+                        domain={[0, 70]}
+                      />
                       <Tooltip />
                       <Legend wrapperStyle={{ fontSize: 12 }} />
                       <Line
+                        yAxisId="left"
                         type="monotone"
                         dataKey="SDMT"
                         stroke="#9370DB"
                         strokeWidth={2}
                         dot={{ r: 4 }}
+                        name="SDMT (símbolos)"
                       />
                       <Line
+                        yAxisId="right"
                         type="monotone"
                         dataKey="9-Hole Peg (s)"
                         stroke="#FFD700"
                         strokeWidth={2}
                         dot={{ r: 4 }}
+                        name="9-Hole Peg (segundos)"
                       />
                     </LineChart>
                   </ResponsiveContainer>
