@@ -89,3 +89,7 @@
 - [x] Criar dropdown "Soluções" (Para Pacientes, Para Médicos, Para Farmacêuticas)
 - [x] Criar dropdown "Login" (Login Médico, Login Farmacêutica)
 - [x] Manter itens: Produto, Time, Falar com Emma
+
+## Correção de Dados do Time
+- [x] Corrigir nome: João Paulo → João Pedro Nardari
+- [x] Atualizar áreas de atuação: Médico + IA

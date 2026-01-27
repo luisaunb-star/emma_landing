@@ -46,9 +46,9 @@ const team = [
     linkedin: "#"
   },
   {
-    name: "João Paulo Nardari",
-    role: "Tecnologia",
-    desc: "Inovação tecnológica e desenvolvimento.",
+    name: "João Pedro Nardari",
+    role: "Médico e IA",
+    desc: "Medicina e Inteligência Artificial aplicada à saúde.",
     linkedin: "https://www.linkedin.com/in/jpnardari/"
   }
 ];
