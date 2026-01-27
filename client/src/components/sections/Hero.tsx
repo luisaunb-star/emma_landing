@@ -82,7 +82,7 @@ export default function Hero() {
           className="relative flex justify-center lg:justify-end"
         >
           <div className="relative z-10 glass-card p-6 md:p-8 w-full max-w-[320px] md:max-w-sm mx-auto lg:mx-0 rotate-[-2deg] hover:rotate-0 transition-transform duration-500">
-            <div className="absolute -top-6 -right-6 w-24 h-24 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg animate-bounce" style={{ animationDuration: '3s' }}>
+            <div className="absolute -top-6 -right-6 w-24 h-24 bg-emma-gold rounded-full flex items-center justify-center shadow-lg animate-bounce" style={{ animationDuration: '3s' }}>
               <span className="font-bold text-emma-text text-xs text-center leading-tight">Jornada<br/>Gamificada</span>
             </div>
             
@@ -94,7 +94,7 @@ export default function Hero() {
                    <div className="w-8 h-8 rounded-full bg-emma-secondary flex items-center justify-center text-emma-primary font-bold">E</div>
                    <span className="font-bold text-emma-text">Olá, Ana</span>
                  </div>
-                 <div className="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 font-bold">
+                 <div className="w-8 h-8 rounded-full bg-emma-gold/20 flex items-center justify-center text-emma-gold font-bold">
                    🏆
                  </div>
                </div>
@@ -131,7 +131,7 @@ export default function Hero() {
                  <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
                    <div className="flex justify-between items-end mb-2">
                      <h3 className="font-bold text-emma-text text-sm">Seu Progresso</h3>
-                     <span className="text-xs text-green-600 font-bold">+12% essa semana</span>
+                     <span className="text-xs text-emma-success font-bold">+12% essa semana</span>
                    </div>
                    <div className="h-24 flex items-end gap-1 justify-between px-1">
                      {[40, 65, 45, 80, 55, 70, 85].map((h, i) => (
