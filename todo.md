@@ -25,3 +25,10 @@
 - [x] Testar fluxo completo (login → dashboard → seleção de paciente)
 - [x] Adicionar dados mockados realistas
 - [x] Documentar credenciais de teste
+
+
+## Correções de Layout e Gráficos
+- [x] Corrigir overflow no painel de pacientes (ScrollArea)
+- [x] Ajustar responsividade da lista de pacientes (badges visíveis em todas as resoluções)
+- [x] Separar gráficos: SDMT + 9-Hole Peg em um, EDSS em outro
+- [x] Adicionar legendas explicativas sobre as escalas dos testes

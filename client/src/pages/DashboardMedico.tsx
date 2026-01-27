@@ -30,6 +30,7 @@ import {
   Activity,
   FileText,
   Calendar,
+  Info,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -117,17 +118,16 @@ export default function DashboardMedico() {
   }
 
   // Preparar dados para gráficos
-  const longitudinalData = selectedPatient.biomarcadores.sdmt.map((sdmt, index) => ({
+  const cognitiveMotorData = selectedPatient.biomarcadores.sdmt.map((sdmt, index) => ({
     date: sdmt.date,
     SDMT: sdmt.value,
-    "9-Hole Peg": selectedPatient.biomarcadores.nineHolePeg[index]?.value || null,
-    EDSS: selectedPatient.biomarcadores.edssHistory.find((e) => e.date === sdmt.date)?.value || null,
+    "9-Hole Peg (s)": selectedPatient.biomarcadores.nineHolePeg[index]?.value || null,
   }));
 
-  const eyeTrackingData = [
-    { x: 1, y: selectedPatient.biomarcadores.eyeTracking.latenciaSacadica, label: "Latência" },
-    { x: 2, y: selectedPatient.biomarcadores.eyeTracking.estabilidadeFixacao, label: "Estabilidade" },
-  ];
+  const edssData = selectedPatient.biomarcadores.edssHistory.map((edss) => ({
+    date: edss.date,
+    EDSS: edss.value,
+  }));
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -150,17 +150,17 @@ export default function DashboardMedico() {
       </header>
 
       <div className="container py-6">
-        <div className="grid grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Sidebar: Lista de Pacientes */}
-          <div className="col-span-12 lg:col-span-3">
-            <Card className="h-[calc(100vh-180px)]">
+          <div className="lg:col-span-3">
+            <Card className="h-auto lg:h-[calc(100vh-180px)]">
               <CardHeader className="pb-3">
                 <CardTitle className="text-base">Pacientes</CardTitle>
                 <CardDescription>Clique para visualizar detalhes</CardDescription>
               </CardHeader>
               <CardContent className="p-0">
-                <ScrollArea className="h-[calc(100vh-280px)]">
-                  <div className="space-y-2 px-4 pb-4">
+                <ScrollArea className="h-auto lg:h-[calc(100vh-280px)] px-4 pb-4">
+                  <div className="space-y-2">
                     {mockPatients.map((patient) => (
                       <button
                         key={patient.id}
@@ -172,26 +172,29 @@ export default function DashboardMedico() {
                             : "border-gray-200 bg-white hover:border-gray-300"
                         )}
                       >
-                        <div className="flex items-start justify-between gap-2">
-                          <div className="flex-1 min-w-0">
-                            <p className="font-semibold text-sm text-emma-text truncate">
-                              {patient.name}
-                            </p>
-                            <p className="text-xs text-muted-foreground">
-                              {patient.age} anos • EDSS {patient.edss}
-                            </p>
+                        <div className="space-y-2">
+                          <div className="flex items-start justify-between gap-2">
+                            <div className="flex-1 min-w-0">
+                              <p className="font-semibold text-sm text-emma-text truncate">
+                                {patient.name}
+                              </p>
+                              <p className="text-xs text-muted-foreground">
+                                {patient.age} anos
+                              </p>
+                            </div>
+                            <Badge
+                              variant="outline"
+                              className={cn("gap-1 text-xs shrink-0", getAlertColor(patient.alertLevel))}
+                            >
+                              {getAlertIcon(patient.alertLevel)}
+                              <span className="hidden sm:inline">{getAlertText(patient.alertLevel)}</span>
+                            </Badge>
                           </div>
-                          <Badge
-                            variant="outline"
-                            className={cn("gap-1 text-xs", getAlertColor(patient.alertLevel))}
-                          >
-                            {getAlertIcon(patient.alertLevel)}
-                            {getAlertText(patient.alertLevel)}
-                          </Badge>
+                          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                            <span className="font-medium">EDSS:</span>
+                            <span>{patient.edss}</span>
+                          </div>
                         </div>
-                        <p className="text-xs text-muted-foreground mt-1 truncate">
-                          {patient.diagnosis}
-                        </p>
                       </button>
                     ))}
                   </div>
@@ -201,11 +204,11 @@ export default function DashboardMedico() {
           </div>
 
           {/* Main Content: Gráficos e Biomarcadores */}
-          <div className="col-span-12 lg:col-span-9 space-y-6">
+          <div className="lg:col-span-9 space-y-6">
             {/* Informações do Paciente */}
             <Card>
               <CardHeader>
-                <div className="flex items-start justify-between">
+                <div className="flex flex-col sm:flex-row items-start justify-between gap-4">
                   <div>
                     <CardTitle className="text-2xl">{selectedPatient.name}</CardTitle>
                     <CardDescription className="mt-1">
@@ -222,7 +225,7 @@ export default function DashboardMedico() {
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="text-center p-4 bg-gray-50 rounded-lg">
                     <p className="text-sm text-muted-foreground">EDSS Atual</p>
                     <p className="text-3xl font-bold text-emma-primary mt-1">
@@ -245,50 +248,83 @@ export default function DashboardMedico() {
               </CardContent>
             </Card>
 
-            {/* Gráfico Longitudinal */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Activity className="w-5 h-5 text-emma-primary" />
-                  Tendência Longitudinal
-                </CardTitle>
-                <CardDescription>
-                  Comparação de SDMT, 9-Hole Peg Test e EDSS ao longo do tempo
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ResponsiveContainer width="100%" height={300}>
-                  <LineChart data={longitudinalData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="date" tick={{ fontSize: 12 }} />
-                    <YAxis tick={{ fontSize: 12 }} />
-                    <Tooltip />
-                    <Legend />
-                    <Line
-                      type="monotone"
-                      dataKey="SDMT"
-                      stroke="#9370DB"
-                      strokeWidth={2}
-                      dot={{ r: 4 }}
-                    />
-                    <Line
-                      type="monotone"
-                      dataKey="9-Hole Peg"
-                      stroke="#FFD700"
-                      strokeWidth={2}
-                      dot={{ r: 4 }}
-                    />
-                    <Line
-                      type="monotone"
-                      dataKey="EDSS"
-                      stroke="#FF6B6B"
-                      strokeWidth={2}
-                      dot={{ r: 4 }}
-                    />
-                  </LineChart>
-                </ResponsiveContainer>
-              </CardContent>
-            </Card>
+            {/* Gráficos Separados */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {/* Gráfico 1: Testes Cognitivos/Motores */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2 text-base">
+                    <Activity className="w-5 h-5 text-emma-primary" />
+                    Testes Cognitivos e Motores
+                  </CardTitle>
+                  <CardDescription className="flex items-start gap-2">
+                    <Info className="w-4 h-4 shrink-0 mt-0.5" />
+                    <span className="text-xs">
+                      SDMT: símbolos corretos (45-65 normal). 9-Hole Peg: tempo em segundos (18-22s normal, menor é melhor).
+                    </span>
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ResponsiveContainer width="100%" height={250}>
+                    <LineChart data={cognitiveMotorData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="date" tick={{ fontSize: 11 }} />
+                      <YAxis tick={{ fontSize: 11 }} />
+                      <Tooltip />
+                      <Legend wrapperStyle={{ fontSize: 12 }} />
+                      <Line
+                        type="monotone"
+                        dataKey="SDMT"
+                        stroke="#9370DB"
+                        strokeWidth={2}
+                        dot={{ r: 4 }}
+                      />
+                      <Line
+                        type="monotone"
+                        dataKey="9-Hole Peg (s)"
+                        stroke="#FFD700"
+                        strokeWidth={2}
+                        dot={{ r: 4 }}
+                      />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </CardContent>
+              </Card>
+
+              {/* Gráfico 2: EDSS */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2 text-base">
+                    <TrendingUp className="w-5 h-5 text-emma-primary" />
+                    Escala EDSS
+                  </CardTitle>
+                  <CardDescription className="flex items-start gap-2">
+                    <Info className="w-4 h-4 shrink-0 mt-0.5" />
+                    <span className="text-xs">
+                      Expanded Disability Status Scale (0-10). Valores maiores indicam maior comprometimento funcional.
+                    </span>
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ResponsiveContainer width="100%" height={250}>
+                    <LineChart data={edssData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="date" tick={{ fontSize: 11 }} />
+                      <YAxis domain={[0, 10]} tick={{ fontSize: 11 }} />
+                      <Tooltip />
+                      <Legend wrapperStyle={{ fontSize: 12 }} />
+                      <Line
+                        type="monotone"
+                        dataKey="EDSS"
+                        stroke="#FF6B6B"
+                        strokeWidth={3}
+                        dot={{ r: 5 }}
+                      />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </CardContent>
+              </Card>
+            </div>
 
             {/* Painéis de Biomarcadores */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
