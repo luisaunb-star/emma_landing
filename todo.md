@@ -138,3 +138,9 @@
 ## Ajuste de Badges de Compliance
 - [x] Remover badges "ANVISA Ready" e "21 CFR Part 11" da página corporativa
 - [x] Manter apenas "Conformidade LGPD" e "ISO 27001"
+
+## Correções de Português Formal - Página Corporativa
+- [x] Remover "enterprise" do subtítulo (mais natural em PT-BR)
+- [x] Corrigir "através de" → "por meio de" (4 ocorrências)
+- [x] Traduzir "Patient Support Programs" → "Programa de Suporte ao Paciente"
+- [x] Melhorar descrição de biomarcadores (separar testes cognitivos de biomarcadores digitais)
