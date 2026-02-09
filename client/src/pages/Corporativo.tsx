@@ -94,14 +94,6 @@ export default function Corporativo() {
                 <Lock className="w-5 h-5 text-green-600" />
                 <span className="font-medium">ISO 27001</span>
               </div>
-              <div className="flex items-center gap-2 text-sm text-slate-600">
-                <CheckCircle2 className="w-5 h-5 text-green-600" />
-                <span className="font-medium">ANVISA Ready</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-slate-600">
-                <Database className="w-5 h-5 text-green-600" />
-                <span className="font-medium">21 CFR Part 11</span>
-              </div>
             </div>
           </motion.div>
         </div>

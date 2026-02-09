@@ -134,3 +134,7 @@
 
 ## Correção Página Corporativa
 - [x] Remover seção de estatísticas (2.5M+ Data Points, 1,500+ Pacientes, etc.) - dados ainda não disponíveis
+
+## Ajuste de Badges de Compliance
+- [x] Remover badges "ANVISA Ready" e "21 CFR Part 11" da página corporativa
+- [x] Manter apenas "Conformidade LGPD" e "ISO 27001"
