@@ -47,17 +47,19 @@ export default function Benefits() {
                   🔒 Você decide o que compartilhar
                 </p>
                 <p className="text-xs text-emerald-700">
-                  Você tem controle total sobre seus dados de saúde. Escolha se quer compartilhar informações anonimizadas para pesquisas em geral ou participar de programas de suporte ao paciente. Pode mudar de ideia a qualquer momento.
+                  Você tem controle total sobre seus dados de saúde. Escolha se quer compartilhar com seu médico, participar de pesquisas em geral (dados anonimizados) ou aderir a programas de suporte ao paciente. Pode mudar de ideia a qualquer momento.
                 </p>
               </div>
               
               <div className="flex flex-col sm:flex-row gap-3 mt-6">
-                <Button className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold flex-1">
-                  Quero fazer parte
-                </Button>
+                <Link href="/contato" className="flex-1">
+                  <Button className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold w-full">
+                    Quero fazer parte
+                  </Button>
+                </Link>
                 <Link href="/contato">
                   <Button variant="outline" className="border-emerald-600 text-emerald-600 hover:bg-emerald-50 w-full sm:w-auto">
-                    Falar Conosco
+                    Fale Conosco
                   </Button>
                 </Link>
               </div>
@@ -208,12 +210,14 @@ export default function Benefits() {
               </div>
               
               <div className="flex flex-col sm:flex-row gap-3 mt-6">
-                <Button className="btn-primary flex-1">
-                  Solicitar Demo do Dashboard
-                </Button>
+                <Link href="/contato" className="flex-1">
+                  <Button className="btn-primary w-full">
+                    Solicitar Demo do Dashboard
+                  </Button>
+                </Link>
                 <Link href="/contato">
                   <Button variant="outline" className="border-emma-primary text-emma-primary hover:bg-emma-primary/10 w-full sm:w-auto">
-                    Falar Conosco
+                    Fale Conosco
                   </Button>
                 </Link>
               </div>

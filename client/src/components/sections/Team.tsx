@@ -40,12 +40,6 @@ const team = [
     linkedin: "https://www.linkedin.com/in/filipezanovello/"
   },
   {
-    name: "Isabela Medeiros",
-    role: "Design & UX",
-    desc: "Design de produto e experiência do usuário.",
-    linkedin: "#"
-  },
-  {
     name: "João Pedro Nardari",
     role: "Médico, IA & Dev",
     desc: "Medicina, Inteligência Artificial e Desenvolvimento.",

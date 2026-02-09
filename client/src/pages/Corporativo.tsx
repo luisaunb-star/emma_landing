@@ -73,15 +73,23 @@ export default function Corporativo() {
               para indústria farmacêutica. Dados estruturados, compliance regulatório e insights em tempo real.
             </p>
             
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-6">
+            <div className="flex flex-col items-center gap-6 pt-6">
               <Button size="lg" className="bg-emma-primary hover:bg-emma-primary/90 text-white gap-2">
                 Agendar Demonstração
                 <ArrowRight className="w-4 h-4" />
               </Button>
-              <Button size="lg" variant="outline" className="gap-2">
-                <Download className="w-4 h-4" />
-                Baixar Whitepaper
-              </Button>
+              
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <span className="text-sm text-slate-600 font-medium">Conheça nossas soluções:</span>
+                <Button variant="outline" size="sm" className="gap-2" onClick={() => document.getElementById('rwe')?.scrollIntoView({ behavior: 'smooth' })}>
+                  <Database className="w-4 h-4" />
+                  Real-World Evidence
+                </Button>
+                <Button variant="outline" size="sm" className="gap-2" onClick={() => document.getElementById('psp')?.scrollIntoView({ behavior: 'smooth' })}>
+                  <Users className="w-4 h-4" />
+                  Programa de Suporte ao Paciente
+                </Button>
+              </div>
             </div>
             
             {/* Trust Badges */}
@@ -110,9 +118,6 @@ export default function Corporativo() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <Badge variant="outline" className="border-blue-600 text-blue-600 mb-4">
-              Proposta A: Dados Anonimizados
-            </Badge>
             <h2 className="text-4xl font-heading font-bold text-slate-900 mb-4">
               Real-World Evidence (RWE)
             </h2>
@@ -141,11 +146,6 @@ export default function Corporativo() {
                     icon: <AlertTriangle className="w-6 h-6" />,
                     title: "Farmacovigilância Ativa e Integrada",
                     desc: "Detecção precoce de eventos adversos através de múltiplas fontes: relatos médicos, registros PSP e biomarcadores digitais. Alertas automáticos para sinais de segurança."
-                  },
-                  {
-                    icon: <FileText className="w-6 h-6" />,
-                    title: "Exportação Regulatória Estruturada",
-                    desc: "Relatórios prontos para ANVISA e FDA. Formatos JSON/CSV com metadados completos, rastreabilidade e conformidade com 21 CFR Part 11."
                   },
                   {
                     icon: <BarChart3 className="w-6 h-6" />,
@@ -281,7 +281,7 @@ export default function Corporativo() {
                   {/* Exportação */}
                   <Button variant="outline" className="w-full gap-2">
                     <Download className="w-4 h-4" />
-                    Exportar Relatório ANVISA (JSON)
+                    Exportar Relatório
                   </Button>
                 </CardContent>
               </Card>
@@ -299,9 +299,6 @@ export default function Corporativo() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <Badge variant="outline" className="border-purple-600 text-purple-600 mb-4">
-              Proposta B: Dados Identificados (Opt-in)
-            </Badge>
             <h2 className="text-4xl font-heading font-bold text-slate-900 mb-4">
               Patient Support Program (PSP)
             </h2>
@@ -374,19 +371,7 @@ export default function Corporativo() {
                 ))}
               </div>
 
-              {/* CTA PSP */}
-              <Card className="bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200">
-                <CardContent className="p-6">
-                  <h4 className="font-bold text-slate-900 mb-2">Integração com CRM Farmacêutico</h4>
-                  <p className="text-sm text-slate-700 mb-4">
-                    Conecte o dashboard PSP da Emma com Salesforce Health Cloud, Veeva CRM ou outras plataformas 
-                    via API REST. Sincronização bidirecional de contatos e histórico.
-                  </p>
-                  <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white">
-                    Solicitar Acesso ao Dashboard PSP
-                  </Button>
-                </CardContent>
-              </Card>
+
             </motion.div>
 
             {/* Dashboard PSP Mockup */}
@@ -545,9 +530,9 @@ export default function Corporativo() {
                       <div>
                         <div className="font-bold text-slate-900 text-sm mb-1">Agendar Reunião</div>
                         <Link href="/contato">
-                          <a className="text-sm text-emma-primary hover:underline">
+                          <span className="text-sm text-emma-primary hover:underline cursor-pointer">
                             Calendário online
-                          </a>
+                          </span>
                         </Link>
                       </div>
                     </CardContent>
@@ -580,7 +565,7 @@ export default function Corporativo() {
             </div>
 
             <div>
-              <h4 className="font-bold mb-4">Soluções</h4>
+              <h4 className="font-bold mb-4 text-white">Soluções</h4>
               <ul className="space-y-2 text-sm text-slate-400">
                 <li><a href="#rwe" className="hover:text-white transition-colors">Real-World Evidence</a></li>
                 <li><a href="#psp" className="hover:text-white transition-colors">Patient Support Program</a></li>
@@ -589,7 +574,7 @@ export default function Corporativo() {
             </div>
 
             <div>
-              <h4 className="font-bold mb-4">Recursos</h4>
+              <h4 className="font-bold mb-4 text-white">Recursos</h4>
               <ul className="space-y-2 text-sm text-slate-400">
                 <li><a href="#" className="hover:text-white transition-colors">Whitepapers</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Casos de Uso</a></li>
@@ -599,7 +584,7 @@ export default function Corporativo() {
             </div>
 
             <div>
-              <h4 className="font-bold mb-4">Contato</h4>
+              <h4 className="font-bold mb-4 text-white">Contato</h4>
               <ul className="space-y-2 text-sm text-slate-400">
                 <li><a href="mailto:corporativo@emma.health" className="hover:text-white transition-colors">corporativo@emma.health</a></li>
                 <li><a href="tel:+551133334444" className="hover:text-white transition-colors">+55 (11) 3333-4444</a></li>

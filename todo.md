@@ -144,3 +144,24 @@
 - [x] Corrigir "através de" → "por meio de" (4 ocorrências)
 - [x] Traduzir "Patient Support Programs" → "Programa de Suporte ao Paciente"
 - [x] Melhorar descrição de biomarcadores (separar testes cognitivos de biomarcadores digitais)
+
+## Correções Múltiplas - Feedback Detalhado
+
+### Página Corporativa
+- [x] Remover seção de whitepaper
+- [x] Remover títulos "Proposta A" e "Proposta B"
+- [x] Adicionar botões de navegação RWE/PSP próximo a "Agendar Demonstração"
+- [x] Remover bloco "Exportação Regulatória Estruturada"
+- [x] Deixar apenas botão "Exportar Relatório" no mockup
+- [x] Remover seção "Integração com CRM Farmacêutico"
+- [x] Corrigir rodapé (texto branco invisível em fundo preto)
+- [x] Corrigir erro `<a>` aninhado
+
+### Site Geral
+- [x] Adicionar "Contato" no menu superior
+- [x] Incluir "Jogos Cognitivos Validados (SDMT e 9-Hole Peg)" na seção tecnologia
+- [x] Adicionar opção de compartilhamento com médico (seção pacientes)
+- [x] Substituir "Falar Conosco" → "Fale Conosco" (todas as ocorrências)
+- [x] Redirecionar "Solicitar Demo" para `/contato`
+- [x] Redirecionar "Quero Fazer Parte" para `/contato`
+- [x] Remover Isabela da equipe

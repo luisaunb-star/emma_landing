@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Eye, Mic, Activity, MousePointer2, Gamepad2 } from "lucide-react";
+import { Eye, Mic, Activity, MousePointer2, Gamepad2, Brain } from "lucide-react";
 
 const features = [
   {
@@ -25,6 +25,12 @@ const features = [
     title: "Destreza Motora",
     description: "Avalia função motora fina e cognitiva através de interações de toque e tempo de reação na tela.",
     color: "bg-orange-50"
+  },
+  {
+    icon: <Brain className="w-8 h-8 text-emma-primary" />,
+    title: "Jogos Cognitivos Validados",
+    description: "Testes clínicos gamificados baseados em SDMT e 9-Hole Peg Test para avaliação objetiva de cognição e destreza.",
+    color: "bg-pink-50"
   }
 ];
 
@@ -43,7 +49,7 @@ export default function Product() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           {features.map((feature, index) => (
             <motion.div
               key={index}
