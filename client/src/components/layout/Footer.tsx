@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-white border-t border-border py-12 md:py-16">
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 mb-10">
           <div className="col-span-1 md:col-span-1">
             <Link href="/">
               <div className="flex items-center gap-2 mb-4 group cursor-pointer">
@@ -27,7 +27,16 @@ export default function Footer() {
             </ul>
           </div>
           
-          <div className="col-span-1 md:col-span-2">
+          <div className="col-span-1 md:col-span-1">
+            <h4 className="font-bold text-emma-text mb-4">Empresas</h4>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li><Link href="/corporativo" className="hover:text-emma-primary transition-colors">Emma Corporativo</Link></li>
+              <li><Link href="/corporativo#rwe" className="hover:text-emma-primary transition-colors">Real-World Evidence</Link></li>
+              <li><Link href="/corporativo#psp" className="hover:text-emma-primary transition-colors">Patient Support Program</Link></li>
+            </ul>
+          </div>
+          
+          <div className="col-span-1 md:col-span-1">
             <h4 className="font-bold text-emma-text mb-4">Contato</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li><a href="mailto:contato@emma.health" className="hover:text-emma-primary transition-colors">contato@emma.health</a></li>

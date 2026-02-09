@@ -90,12 +90,6 @@ export default function Navbar() {
               >
                 Para Médicos
               </DropdownMenuItem>
-              <DropdownMenuItem
-                onClick={() => handleDropdownClick("#pharma")}
-                className="cursor-pointer"
-              >
-                Para Farmacêuticas
-              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
 
@@ -107,33 +101,21 @@ export default function Navbar() {
             Time
           </a>
 
-          {/* Dropdown Login */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="outline"
-                className="border-emma-primary text-emma-primary hover:bg-emma-primary/10 gap-1"
-              >
-                <User className="w-4 h-4" />
-                Login
-                <ChevronDown className="w-4 h-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-48">
-              <DropdownMenuItem asChild className="cursor-pointer">
-                <Link href="/login-medico" className="flex items-center gap-2">
-                  <User className="w-4 h-4" />
-                  Login Médico
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild className="cursor-pointer">
-                <Link href="/login-farma" className="flex items-center gap-2">
-                  <Building2 className="w-4 h-4" />
-                  Login Farmacêutica
-                </Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <Link href="/corporativo">
+            <a className="text-sm font-medium text-muted-foreground hover:text-emma-primary transition-colors">
+              Emma Corporativo
+            </a>
+          </Link>
+
+          <Link href="/login-medico">
+            <Button
+              variant="outline"
+              className="border-emma-primary text-emma-primary hover:bg-emma-primary/10 gap-2"
+            >
+              <User className="w-4 h-4" />
+              Login Médico
+            </Button>
+          </Link>
 
           <Link href="/chat">
             <div className="cursor-pointer">
@@ -183,13 +165,6 @@ export default function Navbar() {
             >
               Para Médicos
             </a>
-            <a
-              href="#pharma"
-              onClick={(e) => scrollToSection(e, "#pharma")}
-              className="text-base font-medium text-foreground py-2 pl-3 block"
-            >
-              Para Farmacêuticas
-            </a>
           </div>
 
           <a
@@ -200,21 +175,18 @@ export default function Navbar() {
             Time
           </a>
 
-          <div className="border-b border-border/50 pb-2">
-            <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase">Login</p>
-            <Link href="/login-medico">
-              <Button variant="outline" className="w-full border-emma-primary text-emma-primary hover:bg-emma-primary/10 gap-2 mb-2">
-                <User className="w-4 h-4" />
-                Login Médico
-              </Button>
-            </Link>
-            <Link href="/login-farma">
-              <Button variant="outline" className="w-full border-emma-accent text-emma-accent hover:bg-emma-accent/10 gap-2">
-                <Building2 className="w-4 h-4" />
-                Login Farmacêutica
-              </Button>
-            </Link>
-          </div>
+          <Link href="/corporativo">
+            <a className="text-base font-medium text-foreground py-2 border-b border-border/50 block">
+              Emma Corporativo
+            </a>
+          </Link>
+
+          <Link href="/login-medico">
+            <Button variant="outline" className="w-full border-emma-primary text-emma-primary hover:bg-emma-primary/10 gap-2">
+              <User className="w-4 h-4" />
+              Login Médico
+            </Button>
+          </Link>
 
           <Link href="/chat">
             <Button className="w-full bg-emma-primary hover:bg-emma-primary/90 text-white rounded-xl gap-3 mt-2 h-12 justify-start pl-4">

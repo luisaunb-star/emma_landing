@@ -10,6 +10,8 @@ import LoginMedico from "./pages/LoginMedico";
 import DashboardMedico from "./pages/DashboardMedico";
 import LoginFarma from "./pages/LoginFarma";
 import DashboardFarma from "./pages/DashboardFarma";
+import Corporativo from "./pages/Corporativo";
+import Contato from "./pages/Contato";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -21,6 +23,8 @@ function Router() {
       <Route path={"/dashboard-medico"} component={DashboardMedico} />
       <Route path={"/login-farma"} component={LoginFarma} />
       <Route path={"/dashboard-farma"} component={DashboardFarma} />
+      <Route path={"/corporativo"} component={Corporativo} />
+      <Route path={"/contato"} component={Contato} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

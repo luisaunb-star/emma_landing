@@ -97,3 +97,37 @@
 ## Ajuste de Áreas de Atuação - João Pedro
 - [x] Incluir "Desenvolvimento" nas áreas de atuação
 - [x] Usar formato consistente com "&": Médico, IA & Dev
+
+## Reestruturação Corporativa - Feedbacks
+### Navegação e Estrutura
+- [x] Adicionar "Emma Corporativo" no menu superior
+- [x] Adicionar link "Emma Corporativo" no footer
+- [x] Remover seção "Para Farmacêuticas" da página principal
+- [x] Mover login farmacêutica para página corporativa
+- [x] Ajustar dropdown "Login" na página principal (apenas Login Médico)
+
+### Página Corporativa (/corporativo)
+- [x] Criar hero institucional com foco em RWE e compliance
+- [x] Implementar Proposta A: Real-World Evidence (dados anonimizados)
+  - [x] Dashboard agregado de coortes
+  - [x] Métricas de eficácia (EDSS, SDMT, biomarcadores)
+  - [x] Exportação para ANVISA/FDA
+  - [x] Módulo de Eventos Adversos (integrado: médicos + PSP + outras fontes)
+- [x] Implementar Proposta B: Patient Support Program (dados identificados com opt-in)
+  - [x] Lista priorizada de pacientes
+  - [x] Sistema de registro de contatos
+  - [x] Alertas de adesão
+  - [x] Disclaimer LGPD claro
+- [x] Adicionar "Login Farmacêutica" no header corporativo
+- [x] Design profissional inspirado em Veeva/Flatiron mantendo identidade Emma
+
+### Página de Contato
+- [x] Criar página /contato
+- [x] Formulário geral de contato
+- [x] Contatos segmentados (Pacientes/Médicos/Empresas)
+- [x] Adicionar links de contato em cada seção de perfil
+
+### Correções na Página Principal
+- [x] Atualizar seção pacientes: "Seus dados, suas regras"
+- [x] Ajustar explicação: "pesquisas em geral" (não apenas científicas)
+- [x] Texto: controle total, opt-in/opt-out a qualquer momento
