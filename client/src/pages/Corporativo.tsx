@@ -107,34 +107,7 @@ export default function Corporativo() {
         </div>
       </section>
 
-      {/* Estatísticas de Impacto */}
-      <section className="py-16 bg-white border-y border-slate-200">
-        <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { value: "2.5M+", label: "Data Points Coletados", icon: <Database className="w-6 h-6" /> },
-              { value: "1,500+", label: "Pacientes Monitorados", icon: <Users className="w-6 h-6" /> },
-              { value: "98%", label: "Taxa de Retenção", icon: <TrendingUp className="w-6 h-6" /> },
-              { value: "12", label: "Centros Participantes", icon: <Building2 className="w-6 h-6" /> }
-            ].map((stat, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="text-center space-y-2"
-              >
-                <div className="flex justify-center text-emma-primary mb-2">
-                  {stat.icon}
-                </div>
-                <div className="text-3xl md:text-4xl font-bold text-slate-900">{stat.value}</div>
-                <div className="text-sm text-slate-600">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* Proposta A: Real-World Evidence (RWE) */}
       <section id="rwe" className="py-24 bg-gradient-to-b from-white to-slate-50">

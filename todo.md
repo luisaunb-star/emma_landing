@@ -131,3 +131,6 @@
 - [x] Atualizar seção pacientes: "Seus dados, suas regras"
 - [x] Ajustar explicação: "pesquisas em geral" (não apenas científicas)
 - [x] Texto: controle total, opt-in/opt-out a qualquer momento
+
+## Correção Página Corporativa
+- [x] Remover seção de estatísticas (2.5M+ Data Points, 1,500+ Pacientes, etc.) - dados ainda não disponíveis
