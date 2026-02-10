@@ -169,3 +169,6 @@
 ## Correções Finais
 - [x] Ordenar equipe alfabeticamente por nome
 - [x] Corrigir erro de `<a>` aninhado (ainda presente no código)
+
+## Correção de Scroll entre Páginas
+- [x] Implementar scroll automático para o topo ao navegar entre páginas
