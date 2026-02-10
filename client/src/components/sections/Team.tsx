@@ -4,10 +4,10 @@ import { Button } from "@/components/ui/button";
 
 const team = [
   {
-    name: "Ricardo Bezerra",
+    name: "Filipe Zanovello",
     role: "Expertise Clínica",
-    desc: "Foco na aplicação médica e validação científica.",
-    linkedin: "https://www.linkedin.com/in/ricardoavilab/"
+    desc: "Especialista em neurologia e validação científica.",
+    linkedin: "https://www.linkedin.com/in/filipezanovello/"
   },
   {
     name: "Gabriela Queiroz",
@@ -22,10 +22,10 @@ const team = [
     linkedin: "https://www.linkedin.com/in/heitor-gbr/"
   },
   {
-    name: "Yasmim Pinheiro",
-    role: "Tecnologia & IA",
-    desc: "Engenharia de software e análise de dados.",
-    linkedin: "https://www.linkedin.com/in/yasmin-pinheiro-54b86514a/"
+    name: "João Pedro Nardari",
+    role: "Médico, IA & Dev",
+    desc: "Medicina, Inteligência Artificial e Desenvolvimento.",
+    linkedin: "https://www.linkedin.com/in/jpnardari/"
   },
   {
     name: "Luisa Guimarães",
@@ -34,16 +34,16 @@ const team = [
     linkedin: "https://www.linkedin.com/in/luisa-veras-de-sandes-guimar%C3%A3es-85820086/"
   },
   {
-    name: "Filipe Zanovello",
+    name: "Ricardo Bezerra",
     role: "Expertise Clínica",
-    desc: "Especialista em neurologia e validação científica.",
-    linkedin: "https://www.linkedin.com/in/filipezanovello/"
+    desc: "Foco na aplicação médica e validação científica.",
+    linkedin: "https://www.linkedin.com/in/ricardoavilab/"
   },
   {
-    name: "João Pedro Nardari",
-    role: "Médico, IA & Dev",
-    desc: "Medicina, Inteligência Artificial e Desenvolvimento.",
-    linkedin: "https://www.linkedin.com/in/jpnardari/"
+    name: "Yasmim Pinheiro",
+    role: "Tecnologia & IA",
+    desc: "Engenharia de software e análise de dados.",
+    linkedin: "https://www.linkedin.com/in/yasmin-pinheiro-54b86514a/"
   }
 ];
 

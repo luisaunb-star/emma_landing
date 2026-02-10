@@ -101,16 +101,12 @@ export default function Navbar() {
             Time
           </a>
 
-          <Link href="/contato">
-            <a className="text-sm font-medium text-muted-foreground hover:text-emma-primary transition-colors">
-              Contato
-            </a>
+          <Link href="/contato" className="text-sm font-medium text-muted-foreground hover:text-emma-primary transition-colors">
+            Contato
           </Link>
 
-          <Link href="/corporativo">
-            <a className="text-sm font-medium text-muted-foreground hover:text-emma-primary transition-colors">
-              Emma Corporativo
-            </a>
+          <Link href="/corporativo" className="text-sm font-medium text-muted-foreground hover:text-emma-primary transition-colors">
+            Emma Corporativo
           </Link>
 
           <Link href="/login-medico">
@@ -181,16 +177,12 @@ export default function Navbar() {
             Time
           </a>
 
-          <Link href="/contato">
-            <a className="text-base font-medium text-foreground py-2 border-b border-border/50 block">
-              Contato
-            </a>
+          <Link href="/contato" className="text-base font-medium text-foreground py-2 border-b border-border/50 block">
+            Contato
           </Link>
 
-          <Link href="/corporativo">
-            <a className="text-base font-medium text-foreground py-2 border-b border-border/50 block">
-              Emma Corporativo
-            </a>
+          <Link href="/corporativo" className="text-base font-medium text-foreground py-2 border-b border-border/50 block">
+            Emma Corporativo
           </Link>
 
           <Link href="/login-medico">

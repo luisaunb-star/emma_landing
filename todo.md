@@ -165,3 +165,7 @@
 - [x] Redirecionar "Solicitar Demo" para `/contato`
 - [x] Redirecionar "Quero Fazer Parte" para `/contato`
 - [x] Remover Isabela da equipe
+
+## Correções Finais
+- [x] Ordenar equipe alfabeticamente por nome
+- [x] Corrigir erro de `<a>` aninhado (ainda presente no código)

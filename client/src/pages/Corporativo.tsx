@@ -24,10 +24,8 @@ export default function Corporativo() {
           </Link>
           
           <div className="flex items-center gap-4">
-            <Link href="/">
-              <a className="text-sm font-medium text-muted-foreground hover:text-emma-primary transition-colors">
-                Voltar ao Site
-              </a>
+            <Link href="/" className="text-sm font-medium text-muted-foreground hover:text-emma-primary transition-colors">
+              Voltar ao Site
             </Link>
             <Link href="/login-farma">
               <Button variant="outline" className="border-emma-primary text-emma-primary hover:bg-emma-primary/10 gap-2">
