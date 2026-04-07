@@ -499,22 +499,8 @@ export default function Corporativo() {
                       </div>
                       <div>
                         <div className="font-bold text-slate-900 text-sm mb-1">Email Corporativo</div>
-                        <a href="mailto:corporativo@emma.health" className="text-sm text-emma-primary hover:underline">
-                          corporativo@emma.health
-                        </a>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-slate-200 bg-slate-50">
-                    <CardContent className="p-6 text-center space-y-3">
-                      <div className="w-12 h-12 rounded-full bg-emma-primary/10 flex items-center justify-center mx-auto">
-                        <Phone className="w-6 h-6 text-emma-primary" />
-                      </div>
-                      <div>
-                        <div className="font-bold text-slate-900 text-sm mb-1">Telefone</div>
-                        <a href="tel:+551133334444" className="text-sm text-emma-primary hover:underline">
-                          +55 (11) 3333-4444
+                        <a href="mailto:contato@emmadigital.care" className="text-sm text-emma-primary hover:underline">
+                          contato@emmadigital.care
                         </a>
                       </div>
                     </CardContent>
@@ -584,8 +570,7 @@ export default function Corporativo() {
             <div>
               <h4 className="font-bold mb-4 text-white">Contato</h4>
               <ul className="space-y-2 text-sm text-slate-400">
-                <li><a href="mailto:corporativo@emma.health" className="hover:text-white transition-colors">corporativo@emma.health</a></li>
-                <li><a href="tel:+551133334444" className="hover:text-white transition-colors">+55 (11) 3333-4444</a></li>
+                <li><a href="mailto:contato@emmadigital.care" className="hover:text-white transition-colors">contato@emmadigital.care</a></li>
                 <li><Link href="/contato" className="hover:text-white transition-colors">Fale Conosco</Link></li>
               </ul>
             </div>

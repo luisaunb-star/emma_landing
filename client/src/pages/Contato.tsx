@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, User, Building2, Stethoscope, MessageSquare } from "lucide-react";
+import { Mail, MapPin, Send, User, Building2, Stethoscope, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -48,55 +48,61 @@ export default function Contato() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <form className="space-y-6">
+                  <form
+                    className="space-y-6"
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      const form = e.currentTarget;
+                      const name = (form.elements.namedItem("name") as HTMLInputElement)?.value;
+                      const email = (form.elements.namedItem("email") as HTMLInputElement)?.value;
+                      const subject = (form.elements.namedItem("subject") as HTMLInputElement)?.value;
+                      const message = (form.elements.namedItem("message") as HTMLTextAreaElement)?.value;
+                      window.location.href = `mailto:contato@emmadigital.care?subject=${encodeURIComponent(subject || "Contato via site")}&body=${encodeURIComponent(`Nome: ${name}\nEmail: ${email}\n\n${message}`)}`;
+                    }}
+                  >
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="name">Nome Completo</Label>
-                        <Input id="name" placeholder="Seu nome" />
+                        <Input id="name" name="name" placeholder="Seu nome" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="email">Email</Label>
-                        <Input id="email" type="email" placeholder="seu@email.com" />
-                      </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="phone">Telefone</Label>
-                        <Input id="phone" type="tel" placeholder="(11) 99999-9999" />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="profile">Perfil</Label>
-                        <Select>
-                          <SelectTrigger id="profile">
-                            <SelectValue placeholder="Selecione seu perfil" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="patient">Paciente</SelectItem>
-                            <SelectItem value="doctor">Médico</SelectItem>
-                            <SelectItem value="pharma">Empresa Farmacêutica</SelectItem>
-                            <SelectItem value="other">Outro</SelectItem>
-                          </SelectContent>
-                        </Select>
+                        <Input id="email" name="email" type="email" placeholder="seu@email.com" />
                       </div>
                     </div>
 
                     <div className="space-y-2">
+                      <Label htmlFor="profile">Perfil</Label>
+                      <Select>
+                        <SelectTrigger id="profile">
+                          <SelectValue placeholder="Selecione seu perfil" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="patient">Paciente</SelectItem>
+                          <SelectItem value="doctor">Médico</SelectItem>
+                          <SelectItem value="pharma">Empresa Farmacêutica</SelectItem>
+                          <SelectItem value="other">Outro</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-2">
                       <Label htmlFor="subject">Assunto</Label>
-                      <Input id="subject" placeholder="Como podemos ajudar?" />
+                      <Input id="subject" name="subject" placeholder="Como podemos ajudar?" />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="message">Mensagem</Label>
                       <Textarea 
-                        id="message" 
+                        id="message"
+                        name="message"
                         placeholder="Descreva sua dúvida ou solicitação..." 
                         rows={6}
                         className="resize-none"
                       />
                     </div>
 
-                    <Button className="w-full bg-emma-primary hover:bg-emma-primary/90 text-white gap-2">
+                    <Button type="submit" className="w-full bg-emma-primary hover:bg-emma-primary/90 text-white gap-2">
                       <Send className="w-4 h-4" />
                       Enviar Mensagem
                     </Button>
@@ -122,18 +128,8 @@ export default function Contato() {
                     <Mail className="w-5 h-5 text-emma-primary mt-0.5 shrink-0" />
                     <div>
                       <div className="text-sm font-medium text-slate-900">Email</div>
-                      <a href="mailto:contato@emma.health" className="text-sm text-emma-primary hover:underline">
-                        contato@emma.health
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <Phone className="w-5 h-5 text-emma-primary mt-0.5 shrink-0" />
-                    <div>
-                      <div className="text-sm font-medium text-slate-900">Telefone</div>
-                      <a href="tel:+551133334444" className="text-sm text-emma-primary hover:underline">
-                        +55 (11) 3333-4444
+                      <a href="mailto:contato@emmadigital.care" className="text-sm text-emma-primary hover:underline">
+                        contato@emmadigital.care
                       </a>
                     </div>
                   </div>
@@ -141,7 +137,7 @@ export default function Contato() {
                   <div className="flex items-start gap-3">
                     <MapPin className="w-5 h-5 text-emma-primary mt-0.5 shrink-0" />
                     <div>
-                      <div className="text-sm font-medium text-slate-900">Endereço</div>
+                      <div className="text-sm font-medium text-slate-900">Localização</div>
                       <p className="text-sm text-slate-600">
                         São Paulo, SP<br />
                         Brasil
@@ -163,8 +159,8 @@ export default function Contato() {
                   <p className="text-sm text-slate-700 mb-3">
                     Dúvidas sobre o app, cadastro ou uso da plataforma
                   </p>
-                  <a href="mailto:pacientes@emma.health" className="text-sm font-medium text-emerald-600 hover:underline">
-                    pacientes@emma.health
+                  <a href="mailto:contato@emmadigital.care" className="text-sm font-medium text-emerald-600 hover:underline">
+                    contato@emmadigital.care
                   </a>
                 </CardContent>
               </Card>
@@ -180,8 +176,8 @@ export default function Contato() {
                   <p className="text-sm text-slate-700 mb-3">
                     Demonstrações, integrações e suporte técnico
                   </p>
-                  <a href="mailto:medicos@emma.health" className="text-sm font-medium text-purple-600 hover:underline">
-                    medicos@emma.health
+                  <a href="mailto:contato@emmadigital.care" className="text-sm font-medium text-purple-600 hover:underline">
+                    contato@emmadigital.care
                   </a>
                 </CardContent>
               </Card>
@@ -195,10 +191,10 @@ export default function Contato() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-slate-700 mb-3">
-                    Parcerias, RWE e Patient Support Programs
+                    Parcerias, RWE e Programas de Suporte ao Paciente
                   </p>
-                  <a href="mailto:corporativo@emma.health" className="text-sm font-medium text-blue-600 hover:underline">
-                    corporativo@emma.health
+                  <a href="mailto:contato@emmadigital.care" className="text-sm font-medium text-blue-600 hover:underline">
+                    contato@emmadigital.care
                   </a>
                 </CardContent>
               </Card>

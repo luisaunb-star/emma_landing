@@ -39,7 +39,7 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-1">
             <h4 className="font-bold text-emma-text mb-4">Contato</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="mailto:contato@emma.health" className="hover:text-emma-primary transition-colors">contato@emma.health</a></li>
+              <li><a href="mailto:contato@emmadigital.care" className="hover:text-emma-primary transition-colors">contato@emmadigital.care</a></li>
               <li>
                 <a 
                   href="https://www.linkedin.com/company/emma-digital-biomarkers/" 

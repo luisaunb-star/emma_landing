@@ -172,3 +172,7 @@
 
 ## Correção de Scroll entre Páginas
 - [x] Implementar scroll automático para o topo ao navegar entre páginas
+
+## Atualização de Informações de Contato
+- [x] Substituir todos os emails por contato@emmadigital.care
+- [x] Remover todos os números de telefone
