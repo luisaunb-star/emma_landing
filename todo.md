@@ -176,3 +176,9 @@
 ## Atualização de Informações de Contato
 - [x] Substituir todos os emails por contato@emmadigital.care
 - [x] Remover todos os números de telefone
+
+## Atualização de Logo e Favicon
+- [ ] Processar imagem da logo: substituir azul (#3D3D8F) por roxo Emma (#7C3AED)
+- [ ] Fazer upload da logo para CDN
+- [ ] Substituir logo no cabeçalho (Navbar e componente Logo)
+- [ ] Configurar favicon com a nova logo
