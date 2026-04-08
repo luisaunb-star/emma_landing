@@ -10,8 +10,8 @@ const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310419663029611998/fSBNx
 
 export default function Logo({ className, showText = true, textClassName }: LogoProps) {
   return (
-    <div className={cn("flex items-center gap-2", className)}>
-      <div className="relative w-10 h-10 flex items-center justify-center">
+    <div className={cn("flex items-center gap-3", className)}>
+      <div className="relative w-16 h-16 flex items-center justify-center">
         <img
           src={LOGO_URL}
           alt="Emma logo"
@@ -19,7 +19,7 @@ export default function Logo({ className, showText = true, textClassName }: Logo
         />
       </div>
       {showText && (
-        <span className={cn("font-heading font-bold text-2xl text-emma-text", textClassName)}>
+        <span className={cn("font-heading font-bold text-5xl text-emma-text", textClassName)}>
           Emma
         </span>
       )}
