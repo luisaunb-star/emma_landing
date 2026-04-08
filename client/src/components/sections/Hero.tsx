@@ -50,13 +50,7 @@ export default function Hero() {
             >
               Para Médicos
             </Button>
-            <Button 
-              variant="outline" 
-              className="text-base md:text-lg h-12 md:h-14 px-6 md:px-8 border-emma-primary/20 text-emma-text hover:bg-emma-secondary/50"
-              onClick={() => document.getElementById('pharma')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              Para Farmacêuticas
-            </Button>
+
           </div>
 
           <div className="pt-8 flex items-center gap-8 text-sm text-muted-foreground">

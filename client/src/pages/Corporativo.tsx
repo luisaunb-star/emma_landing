@@ -19,7 +19,7 @@ export default function Corporativo() {
         <div className="container flex items-center justify-between">
           <Link href="/">
             <div className="flex items-center gap-2 group cursor-pointer">
-              <Logo />
+              <Logo size="md" />
             </div>
           </Link>
           
@@ -542,7 +542,7 @@ export default function Corporativo() {
         <div className="container">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <Logo className="mb-4" />
+              <Logo size="md" className="mb-4" textClassName="text-white" />
               <p className="text-sm text-slate-400 leading-relaxed">
                 Transformando dados de saúde em evidências acionáveis para a indústria farmacêutica.
               </p>
