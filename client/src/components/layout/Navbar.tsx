@@ -49,77 +49,37 @@ export default function Navbar() {
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "bg-white/90 backdrop-blur-md shadow-sm"
-          : "bg-transparent"
+        isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-2" : "bg-transparent py-3"
       )}
     >
-      <div className="container flex flex-col py-2">
-        {/* Linha superior: logo à esquerda, CTAs à direita */}
-        <div className="flex items-center justify-between">
-          <Link href="/">
-            <div className="flex items-center gap-2 group cursor-pointer">
-              <Logo size="lg" />
-            </div>
-          </Link>
-
-          {/* Desktop: CTAs */}
-          <div className="hidden lg:flex items-center gap-3">
-            <Link href="/login-medico">
-              <Button
-                variant="outline"
-                className="border-emma-primary text-emma-primary hover:bg-emma-primary/10 gap-2"
-              >
-                <User className="w-4 h-4" />
-                Login Médico
-              </Button>
-            </Link>
-
-            <Link href="/chat">
-              <Button className="bg-emma-primary hover:bg-emma-primary/90 text-white rounded-full pl-2 pr-6 gap-3 h-12">
-                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border-2 border-white/50">
-                  <Bot className="w-5 h-5 text-emma-primary" />
-                </div>
-                Falar com Emma
-              </Button>
-            </Link>
+      <div className="container flex items-center justify-between gap-6">
+        {/* Logo */}
+        <Link href="/">
+          <div className="flex items-center gap-2 group cursor-pointer shrink-0">
+            <Logo size="lg" />
           </div>
+        </Link>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            className="lg:hidden p-2 text-emma-text"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X /> : <Menu />}
-          </button>
-        </div>
-
-        {/* Linha inferior: links de navegação (desktop) */}
-        <div className="hidden lg:flex items-center gap-6 pb-2 mt-1">
+        {/* Desktop Nav — centro */}
+        <div className="hidden lg:flex items-center gap-5 flex-1 justify-center">
           <a
             href="#product"
             onClick={(e) => scrollToSection(e, "#product")}
-            className="text-sm font-medium text-muted-foreground hover:text-emma-primary transition-colors"
+            className="text-sm font-medium text-muted-foreground hover:text-emma-primary transition-colors whitespace-nowrap"
           >
             Produto
           </a>
 
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-emma-primary transition-colors outline-none">
+            <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-emma-primary transition-colors outline-none whitespace-nowrap">
               Soluções
               <ChevronDown className="w-4 h-4" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="w-48">
-              <DropdownMenuItem
-                onClick={() => handleDropdownClick("#patients")}
-                className="cursor-pointer"
-              >
+              <DropdownMenuItem onClick={() => handleDropdownClick("#patients")} className="cursor-pointer">
                 Para Pacientes
               </DropdownMenuItem>
-              <DropdownMenuItem
-                onClick={() => handleDropdownClick("#doctors")}
-                className="cursor-pointer"
-              >
+              <DropdownMenuItem onClick={() => handleDropdownClick("#doctors")} className="cursor-pointer">
                 Para Médicos
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -128,19 +88,46 @@ export default function Navbar() {
           <a
             href="#team"
             onClick={(e) => scrollToSection(e, "#team")}
-            className="text-sm font-medium text-muted-foreground hover:text-emma-primary transition-colors"
+            className="text-sm font-medium text-muted-foreground hover:text-emma-primary transition-colors whitespace-nowrap"
           >
             Time
           </a>
 
-          <Link href="/contato" className="text-sm font-medium text-muted-foreground hover:text-emma-primary transition-colors">
+          <Link href="/contato" className="text-sm font-medium text-muted-foreground hover:text-emma-primary transition-colors whitespace-nowrap">
             Contato
           </Link>
 
-          <Link href="/corporativo" className="text-sm font-medium text-muted-foreground hover:text-emma-primary transition-colors">
+          <Link href="/corporativo" className="text-sm font-medium text-muted-foreground hover:text-emma-primary transition-colors whitespace-nowrap">
             Emma Corporativo
           </Link>
         </div>
+
+        {/* CTAs — direita */}
+        <div className="hidden lg:flex items-center gap-3 shrink-0">
+          <Link href="/login-medico">
+            <Button variant="outline" className="border-emma-primary text-emma-primary hover:bg-emma-primary/10 gap-2 whitespace-nowrap">
+              <User className="w-4 h-4" />
+              Login Médico
+            </Button>
+          </Link>
+
+          <Link href="/chat">
+            <Button className="bg-emma-primary hover:bg-emma-primary/90 text-white rounded-full pl-2 pr-6 gap-3 h-12 whitespace-nowrap">
+              <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border-2 border-white/50">
+                <Bot className="w-5 h-5 text-emma-primary" />
+              </div>
+              Falar com Emma
+            </Button>
+          </Link>
+        </div>
+
+        {/* Mobile Menu Toggle */}
+        <button
+          className="lg:hidden p-2 text-emma-text"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? <X /> : <Menu />}
+        </button>
       </div>
 
       {/* Mobile Nav */}
@@ -156,27 +143,15 @@ export default function Navbar() {
 
           <div className="border-b border-border/50 pb-2">
             <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase">Soluções</p>
-            <a
-              href="#patients"
-              onClick={(e) => scrollToSection(e, "#patients")}
-              className="text-base font-medium text-foreground py-2 pl-3 block"
-            >
+            <a href="#patients" onClick={(e) => scrollToSection(e, "#patients")} className="text-base font-medium text-foreground py-2 pl-3 block">
               Para Pacientes
             </a>
-            <a
-              href="#doctors"
-              onClick={(e) => scrollToSection(e, "#doctors")}
-              className="text-base font-medium text-foreground py-2 pl-3 block"
-            >
+            <a href="#doctors" onClick={(e) => scrollToSection(e, "#doctors")} className="text-base font-medium text-foreground py-2 pl-3 block">
               Para Médicos
             </a>
           </div>
 
-          <a
-            href="#team"
-            onClick={(e) => scrollToSection(e, "#team")}
-            className="text-base font-medium text-foreground py-2 border-b border-border/50"
-          >
+          <a href="#team" onClick={(e) => scrollToSection(e, "#team")} className="text-base font-medium text-foreground py-2 border-b border-border/50">
             Time
           </a>
 
