@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Bot, User, Building2, ChevronDown } from "lucide-react";
+import { Menu, X, Bot, User, ChevronDown } from "lucide-react";
 import Logo from "@/components/ui/Logo";
 import { Button } from "@/components/ui/button";
 import {
@@ -26,7 +26,6 @@ export default function Navbar() {
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (location !== "/") return;
-    
     e.preventDefault();
     const element = document.querySelector(href);
     if (element) {
@@ -40,7 +39,6 @@ export default function Navbar() {
       window.location.href = `/${href}`;
       return;
     }
-    
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -51,18 +49,53 @@ export default function Navbar() {
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-2" : "bg-transparent py-3"
+        isScrolled
+          ? "bg-white/90 backdrop-blur-md shadow-sm"
+          : "bg-transparent"
       )}
     >
-      <div className="container flex items-center justify-between">
-        <Link href="/">
-          <div className="flex items-center gap-2 group cursor-pointer">
-            <Logo size="md" />
-          </div>
-        </Link>
+      <div className="container flex flex-col py-2">
+        {/* Linha superior: logo à esquerda, CTAs à direita */}
+        <div className="flex items-center justify-between">
+          <Link href="/">
+            <div className="flex items-center gap-2 group cursor-pointer">
+              <Logo size="lg" />
+            </div>
+          </Link>
 
-        {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-6">
+          {/* Desktop: CTAs */}
+          <div className="hidden lg:flex items-center gap-3">
+            <Link href="/login-medico">
+              <Button
+                variant="outline"
+                className="border-emma-primary text-emma-primary hover:bg-emma-primary/10 gap-2"
+              >
+                <User className="w-4 h-4" />
+                Login Médico
+              </Button>
+            </Link>
+
+            <Link href="/chat">
+              <Button className="bg-emma-primary hover:bg-emma-primary/90 text-white rounded-full pl-2 pr-6 gap-3 h-12">
+                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border-2 border-white/50">
+                  <Bot className="w-5 h-5 text-emma-primary" />
+                </div>
+                Falar com Emma
+              </Button>
+            </Link>
+          </div>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            className="lg:hidden p-2 text-emma-text"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
+
+        {/* Linha inferior: links de navegação (desktop) */}
+        <div className="hidden lg:flex items-center gap-6 pb-2 mt-1">
           <a
             href="#product"
             onClick={(e) => scrollToSection(e, "#product")}
@@ -71,7 +104,6 @@ export default function Navbar() {
             Produto
           </a>
 
-          {/* Dropdown Soluções */}
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-emma-primary transition-colors outline-none">
               Soluções
@@ -108,36 +140,7 @@ export default function Navbar() {
           <Link href="/corporativo" className="text-sm font-medium text-muted-foreground hover:text-emma-primary transition-colors">
             Emma Corporativo
           </Link>
-
-          <Link href="/login-medico">
-            <Button
-              variant="outline"
-              className="border-emma-primary text-emma-primary hover:bg-emma-primary/10 gap-2"
-            >
-              <User className="w-4 h-4" />
-              Login Médico
-            </Button>
-          </Link>
-
-          <Link href="/chat">
-            <div className="cursor-pointer">
-              <Button className="bg-emma-primary hover:bg-emma-primary/90 text-white rounded-full pl-2 pr-6 gap-3 h-12">
-                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border-2 border-white/50">
-                  <Bot className="w-5 h-5 text-emma-primary" />
-                </div>
-                Falar com Emma
-              </Button>
-            </div>
-          </Link>
         </div>
-
-        {/* Mobile Menu Toggle */}
-        <button
-          className="lg:hidden p-2 text-emma-text"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X /> : <Menu />}
-        </button>
       </div>
 
       {/* Mobile Nav */}
@@ -150,7 +153,7 @@ export default function Navbar() {
           >
             Produto
           </a>
-          
+
           <div className="border-b border-border/50 pb-2">
             <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase">Soluções</p>
             <a
