@@ -72,10 +72,12 @@ export default function Corporativo() {
             </p>
             
             <div className="flex flex-col items-center gap-6 pt-6">
-              <Button size="lg" className="bg-emma-primary hover:bg-emma-primary/90 text-white gap-2">
-                Agendar Demonstração
-                <ArrowRight className="w-4 h-4" />
-              </Button>
+              <Link href="/contato">
+                <Button size="lg" className="bg-emma-primary hover:bg-emma-primary/90 text-white gap-2">
+                  Agendar Demonstração
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
               
               <div className="flex flex-wrap items-center justify-center gap-3">
                 <span className="text-sm text-slate-600 font-medium">Conheça nossas soluções:</span>
@@ -554,16 +556,6 @@ export default function Corporativo() {
                 <li><a href="#rwe" className="hover:text-white transition-colors">Real-World Evidence</a></li>
                 <li><a href="#psp" className="hover:text-white transition-colors">Patient Support Program</a></li>
                 <li><Link href="/" className="hover:text-white transition-colors">Site Principal</Link></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-bold mb-4 text-white">Recursos</h4>
-              <ul className="space-y-2 text-sm text-slate-400">
-                <li><a href="#" className="hover:text-white transition-colors">Whitepapers</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Casos de Uso</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Documentação API</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Compliance</a></li>
               </ul>
             </div>
 

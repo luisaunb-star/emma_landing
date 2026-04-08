@@ -182,3 +182,10 @@
 - [ ] Fazer upload da logo para CDN
 - [ ] Substituir logo no cabeçalho (Navbar e componente Logo)
 - [ ] Configurar favicon com a nova logo
+
+## Correções - Abril 2026
+- [x] Corrigir botão "Entrar em Contato" na home (seção CTA final) para redirecionar para /contato
+- [x] Corrigir botão "Agendar Demonstração" no Corporativo para redirecionar para /contato
+- [x] Remover seção "Recursos" do rodapé do Corporativo (Whitepapers, Casos de Uso, Documentação API, Compliance)
+- [x] Remover João Pedro Nardari da seção de equipe
+- [ ] Criar formulário de lista de espera para lançamento do app

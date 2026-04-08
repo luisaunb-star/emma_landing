@@ -22,12 +22,6 @@ const team = [
     linkedin: "https://www.linkedin.com/in/heitor-gbr/"
   },
   {
-    name: "João Pedro Nardari",
-    role: "Médico, IA & Dev",
-    desc: "Medicina, Inteligência Artificial e Desenvolvimento.",
-    linkedin: "https://www.linkedin.com/in/jpnardari/"
-  },
-  {
     name: "Luisa Guimarães",
     role: "Estratégia & Negócios",
     desc: "Visão empreendedora e modelo B2B2C.",
@@ -123,9 +117,11 @@ export default function Team() {
               Junte-se a nós nessa jornada de inovação e cuidado. Seja você paciente, médico ou parceiro farmacêutico.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-white text-emma-primary hover:bg-gray-100 text-lg h-14 px-8 rounded-xl font-bold shadow-lg">
-                Entrar em Contato
-              </Button>
+              <a href="/contato">
+                <Button className="bg-white text-emma-primary hover:bg-gray-100 text-lg h-14 px-8 rounded-xl font-bold shadow-lg">
+                  Entrar em Contato
+                </Button>
+              </a>
               <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 text-lg h-14 px-8 rounded-xl">
                 Baixar Apresentação
               </Button>
