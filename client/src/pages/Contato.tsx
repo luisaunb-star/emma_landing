@@ -1,6 +1,6 @@
-import { Link } from "wouter";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Send, User, Building2, Stethoscope, MessageSquare } from "lucide-react";
+import { Mail, MapPin, Send, User, Building2, Stethoscope, MessageSquare, CheckCircle2, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -9,8 +9,27 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { trpc } from "@/lib/trpc";
 
 export default function Contato() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [profile, setProfile] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const sendMutation = trpc.contact.send.useMutation({
+    onSuccess: () => {
+      setSubmitted(true);
+    },
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    sendMutation.mutate({ name, email, profile: profile || undefined, subject: subject || undefined, message });
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Navbar />
@@ -48,65 +67,111 @@ export default function Contato() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <form
-                    className="space-y-6"
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      const form = e.currentTarget;
-                      const name = (form.elements.namedItem("name") as HTMLInputElement)?.value;
-                      const email = (form.elements.namedItem("email") as HTMLInputElement)?.value;
-                      const subject = (form.elements.namedItem("subject") as HTMLInputElement)?.value;
-                      const message = (form.elements.namedItem("message") as HTMLTextAreaElement)?.value;
-                      window.location.href = `mailto:contato@emmadigital.care?subject=${encodeURIComponent(subject || "Contato via site")}&body=${encodeURIComponent(`Nome: ${name}\nEmail: ${email}\n\n${message}`)}`;
-                    }}
-                  >
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="name">Nome Completo</Label>
-                        <Input id="name" name="name" placeholder="Seu nome" />
+                  {submitted ? (
+                    <div className="flex flex-col items-center justify-center py-12 text-center gap-4">
+                      <div className="w-16 h-16 bg-emma-secondary rounded-full flex items-center justify-center">
+                        <CheckCircle2 className="w-8 h-8 text-emma-primary" />
                       </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="email">Email</Label>
-                        <Input id="email" name="email" type="email" placeholder="seu@email.com" />
+                      <h3 className="text-xl font-bold text-emma-text">Mensagem enviada!</h3>
+                      <p className="text-muted-foreground max-w-sm">
+                        Recebemos sua mensagem e retornaremos em até 24 horas no e-mail <strong>{email}</strong>.
+                      </p>
+                      <Button
+                        variant="outline"
+                        className="mt-2 border-emma-primary text-emma-primary"
+                        onClick={() => {
+                          setSubmitted(false);
+                          setName(""); setEmail(""); setProfile(""); setSubject(""); setMessage("");
+                        }}
+                      >
+                        Enviar outra mensagem
+                      </Button>
+                    </div>
+                  ) : (
+                    <form className="space-y-6" onSubmit={handleSubmit}>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="name">Nome Completo</Label>
+                          <Input
+                            id="name"
+                            placeholder="Seu nome"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required
+                            minLength={2}
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="email">Email</Label>
+                          <Input
+                            id="email"
+                            type="email"
+                            placeholder="seu@email.com"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                          />
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="profile">Perfil</Label>
-                      <Select>
-                        <SelectTrigger id="profile">
-                          <SelectValue placeholder="Selecione seu perfil" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="patient">Paciente</SelectItem>
-                          <SelectItem value="doctor">Médico</SelectItem>
-                          <SelectItem value="pharma">Empresa Farmacêutica</SelectItem>
-                          <SelectItem value="other">Outro</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="profile">Perfil</Label>
+                        <Select value={profile} onValueChange={setProfile}>
+                          <SelectTrigger id="profile">
+                            <SelectValue placeholder="Selecione seu perfil" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="patient">Paciente</SelectItem>
+                            <SelectItem value="doctor">Médico</SelectItem>
+                            <SelectItem value="pharma">Empresa Farmacêutica</SelectItem>
+                            <SelectItem value="other">Outro</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="subject">Assunto</Label>
-                      <Input id="subject" name="subject" placeholder="Como podemos ajudar?" />
-                    </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="subject">Assunto</Label>
+                        <Input
+                          id="subject"
+                          placeholder="Como podemos ajudar?"
+                          value={subject}
+                          onChange={(e) => setSubject(e.target.value)}
+                        />
+                      </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="message">Mensagem</Label>
-                      <Textarea 
-                        id="message"
-                        name="message"
-                        placeholder="Descreva sua dúvida ou solicitação..." 
-                        rows={6}
-                        className="resize-none"
-                      />
-                    </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="message">Mensagem</Label>
+                        <Textarea
+                          id="message"
+                          placeholder="Descreva sua dúvida ou solicitação..."
+                          rows={6}
+                          className="resize-none"
+                          value={message}
+                          onChange={(e) => setMessage(e.target.value)}
+                          required
+                          minLength={10}
+                        />
+                      </div>
 
-                    <Button type="submit" className="w-full bg-emma-primary hover:bg-emma-primary/90 text-white gap-2">
-                      <Send className="w-4 h-4" />
-                      Enviar Mensagem
-                    </Button>
-                  </form>
+                      {sendMutation.isError && (
+                        <p className="text-sm text-red-500">
+                          Erro ao enviar mensagem. Por favor, tente novamente.
+                        </p>
+                      )}
+
+                      <Button
+                        type="submit"
+                        disabled={sendMutation.isPending}
+                        className="w-full bg-emma-primary hover:bg-emma-primary/90 text-white gap-2"
+                      >
+                        {sendMutation.isPending ? (
+                          <><Loader2 className="w-4 h-4 animate-spin" /> Enviando...</>
+                        ) : (
+                          <><Send className="w-4 h-4" /> Enviar Mensagem</>
+                        )}
+                      </Button>
+                    </form>
+                  )}
                 </CardContent>
               </Card>
             </motion.div>
@@ -205,9 +270,9 @@ export default function Contato() {
                   <CardTitle className="text-lg">Redes Sociais</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <a 
-                    href="https://www.linkedin.com/company/emma-digital-biomarkers/" 
-                    target="_blank" 
+                  <a
+                    href="https://www.linkedin.com/company/emma-digital-biomarkers/"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-sm text-emma-primary hover:underline"
                   >

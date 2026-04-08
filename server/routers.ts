@@ -2,6 +2,9 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
+import { notifyOwner } from "./_core/notification";
+import { getDb } from "./db";
+import { waitlist, contactMessages } from "../drizzle/schema";
 import Anthropic from '@anthropic-ai/sdk';
 import { z } from 'zod';
 
@@ -17,6 +20,73 @@ export const appRouter = router({
         success: true,
       } as const;
     }),
+  }),
+
+  // Lista de espera
+  waitlist: router({
+    join: publicProcedure
+      .input(z.object({
+        name: z.string().min(2),
+        email: z.string().email(),
+        profile: z.enum(["patient", "doctor", "other"]),
+      }))
+      .mutation(async ({ input }) => {
+        const db = await getDb();
+        if (!db) throw new Error("Database not available");
+
+        // Verifica se e-mail já existe
+        const { eq } = await import("drizzle-orm");
+        const existing = await db.select().from(waitlist).where(eq(waitlist.email, input.email)).limit(1);
+        if (existing.length > 0) {
+          return { success: true, alreadyRegistered: true };
+        }
+
+        await db.insert(waitlist).values({
+          name: input.name,
+          email: input.email,
+          profile: input.profile,
+        });
+
+        const profileLabel = input.profile === "patient" ? "Paciente" : input.profile === "doctor" ? "Médico" : "Outro";
+        await notifyOwner({
+          title: `✨ Nova inscrição na lista de espera`,
+          content: `Nome: ${input.name}\nEmail: ${input.email}\nPerfil: ${profileLabel}`,
+        }).catch(() => {});
+
+        return { success: true, alreadyRegistered: false };
+      }),
+  }),
+
+  // Formulário de contato
+  contact: router({
+    send: publicProcedure
+      .input(z.object({
+        name: z.string().min(2),
+        email: z.string().email(),
+        profile: z.string().optional(),
+        subject: z.string().optional(),
+        message: z.string().min(10),
+      }))
+      .mutation(async ({ input }) => {
+        const db = await getDb();
+        if (!db) throw new Error("Database not available");
+
+        await db.insert(contactMessages).values({
+          name: input.name,
+          email: input.email,
+          profile: input.profile ?? null,
+          subject: input.subject ?? null,
+          message: input.message,
+        });
+
+        const profileLabel = input.profile === "patient" ? "Paciente" : input.profile === "doctor" ? "Médico" : input.profile === "pharma" ? "Empresa Farmacêutica" : "Outro";
+        await notifyOwner({
+          title: `📧 Nova mensagem de contato: ${input.subject || "(sem assunto)"}`,
+          content: `Nome: ${input.name}\nEmail: ${input.email}\nPerfil: ${profileLabel}\nAssunto: ${input.subject || "-"}\n\nMensagem:\n${input.message}`,
+        }).catch(() => {});
+
+        return { success: true };
+      }),
   }),
 
   // Chatbot Emma com Claude
@@ -134,3 +204,4 @@ ${userContext}
 });
 
 export type AppRouter = typeof appRouter;
+

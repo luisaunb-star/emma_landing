@@ -188,4 +188,6 @@
 - [x] Corrigir botão "Agendar Demonstração" no Corporativo para redirecionar para /contato
 - [x] Remover seção "Recursos" do rodapé do Corporativo (Whitepapers, Casos de Uso, Documentação API, Compliance)
 - [x] Remover João Pedro Nardari da seção de equipe
-- [ ] Criar formulário de lista de espera para lançamento do app
+- [x] Criar formulário de lista de espera para lançamento do app
+- [x] Verificar e corrigir envio de e-mail no formulário de contato geral (/contato)
+- [x] Implementar formulário de lista de espera no hero (Opção A) com envio para contato@emmadigital.care

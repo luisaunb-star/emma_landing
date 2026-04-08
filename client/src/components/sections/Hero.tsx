@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, Activity, Smartphone, Brain } from "lucide-react";
+import WaitlistForm from "@/components/sections/WaitlistForm";
 
 export default function Hero() {
   return (
@@ -53,7 +54,9 @@ export default function Hero() {
 
           </div>
 
-          <div className="pt-8 flex items-center gap-8 text-sm text-muted-foreground">
+          <WaitlistForm />
+
+          <div className="pt-4 flex items-center gap-8 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <Activity className="w-5 h-5 text-emma-primary" />
               <span>Biomarcadores Digitais</span>
