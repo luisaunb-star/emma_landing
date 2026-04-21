@@ -12,7 +12,7 @@ const team = [
   {
     name: "Gabriela Queiroz",
     role: "Expertise Clínica",
-    desc: "Especialista em neurologia e cuidado ao paciente.",
+    desc: "Fisioterapeuta e especialista em rastreamento ocular.",
     linkedin: "https://www.linkedin.com/in/maria-gabriela-carneiro-queiroz-b32989265/"
   },
   {
