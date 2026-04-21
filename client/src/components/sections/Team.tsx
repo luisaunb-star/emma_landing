@@ -44,7 +44,6 @@ const team = [
 const partners = [
   { name: "Inova HC", desc: "Incubação e Validação Clínica" },
   { name: "Harvard Health Systems", desc: "Vencedores Hackathon 2025" },
-  { name: "Centelha", desc: "Programa de Fomento" }
 ];
 
 export default function Team() {
