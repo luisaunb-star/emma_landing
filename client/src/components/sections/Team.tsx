@@ -7,37 +7,43 @@ const team = [
     name: "Gabriela Queiroz",
     role: "Expertise Clínica",
     desc: "Fisioterapeuta e especialista em rastreamento ocular.",
-    linkedin: "https://www.linkedin.com/in/maria-gabriela-carneiro-queiroz-b32989265/"
+    linkedin: "https://www.linkedin.com/in/maria-gabriela-carneiro-queiroz-b32989265/",
+    photo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663029611998/fSBNxnDPk5rBKrBA4jebhD/gabriela_09561fa3.png"
   },
   {
     name: "Heitor Reis",
     role: "Tecnologia & IA",
     desc: "Engenheiro de software e desenvolvimento de algoritmos.",
-    linkedin: "https://www.linkedin.com/in/heitor-gbr/"
+    linkedin: "https://www.linkedin.com/in/heitor-gbr/",
+    photo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663029611998/fSBNxnDPk5rBKrBA4jebhD/heitor_d85f62f1.jpg"
   },
   {
     name: "Luisa Guimarães",
     role: "Estratégia & Negócios",
     desc: "Doutora em Administração e especialista em expansão de mercado B2B na saúde.",
-    linkedin: "https://www.linkedin.com/in/luisa-veras-de-sandes-guimar%C3%A3es-85820086/"
+    linkedin: "https://www.linkedin.com/in/luisa-veras-de-sandes-guimar%C3%A3es-85820086/",
+    photo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663029611998/fSBNxnDPk5rBKrBA4jebhD/luisa_31aa2b09.jpg"
   },
   {
     name: "Ricardo Bezerra",
     role: "Expertise Clínica",
     desc: "Foco na aplicação médica e validação científica.",
-    linkedin: "https://www.linkedin.com/in/ricardoavilab/"
+    linkedin: "https://www.linkedin.com/in/ricardoavilab/",
+    photo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663029611998/fSBNxnDPk5rBKrBA4jebhD/ricardo_9d8c38cc.png"
   },
   {
     name: "Yasmim Pinheiro",
     role: "Tecnologia & IA",
     desc: "Engenheira biomédica e análise de dados.",
-    linkedin: "https://www.linkedin.com/in/yasmin-pinheiro-54b86514a/"
+    linkedin: "https://www.linkedin.com/in/yasmin-pinheiro-54b86514a/",
+    photo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663029611998/fSBNxnDPk5rBKrBA4jebhD/yasmin_d2a0d72e.jpg"
   },
   {
     name: "Filipe Zanovello",
     role: "Expertise Clínica",
     desc: "Médico em formação.",
-    linkedin: "https://www.linkedin.com/in/filipezanovello/"
+    linkedin: "https://www.linkedin.com/in/filipezanovello/",
+    photo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663029611998/fSBNxnDPk5rBKrBA4jebhD/filipe_b32bca03.jpg"
   }
 ];
 
@@ -71,9 +77,17 @@ export default function Team() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-white p-6 rounded-2xl shadow-sm border border-border hover:shadow-md transition-all text-center group"
             >
-              <div className="w-20 h-20 mx-auto bg-emma-secondary rounded-full mb-4 flex items-center justify-center text-2xl font-bold text-emma-primary group-hover:bg-emma-primary group-hover:text-white transition-colors">
-                {member.name.charAt(0)}
-              </div>
+              {member.photo ? (
+                <img
+                  src={member.photo}
+                  alt={member.name}
+                  className="w-20 h-20 mx-auto rounded-full mb-4 object-cover object-top"
+                />
+              ) : (
+                <div className="w-20 h-20 mx-auto bg-emma-secondary rounded-full mb-4 flex items-center justify-center text-2xl font-bold text-emma-primary group-hover:bg-emma-primary group-hover:text-white transition-colors">
+                  {member.name.charAt(0)}
+                </div>
+              )}
               <h3 className="font-bold text-emma-text mb-1">{member.name}</h3>
               <p className="text-xs font-bold text-emma-primary uppercase tracking-wide mb-3">{member.role}</p>
               <p className="text-sm text-muted-foreground">{member.desc}</p>
