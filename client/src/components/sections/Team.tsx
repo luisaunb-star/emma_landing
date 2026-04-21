@@ -4,12 +4,6 @@ import { Button } from "@/components/ui/button";
 
 const team = [
   {
-    name: "Filipe Zanovello",
-    role: "Expertise Clínica",
-    desc: "Especialista em neurologia e validação científica.",
-    linkedin: "https://www.linkedin.com/in/filipezanovello/"
-  },
-  {
     name: "Gabriela Queiroz",
     role: "Expertise Clínica",
     desc: "Fisioterapeuta e especialista em rastreamento ocular.",
@@ -18,13 +12,13 @@ const team = [
   {
     name: "Heitor Reis",
     role: "Tecnologia & IA",
-    desc: "Desenvolvimento de algoritmos e biotecnologia.",
+    desc: "Engenheiro de software e desenvolvimento de algoritmos.",
     linkedin: "https://www.linkedin.com/in/heitor-gbr/"
   },
   {
     name: "Luisa Guimarães",
     role: "Estratégia & Negócios",
-    desc: "Visão empreendedora e modelo B2B2C.",
+    desc: "Doutora em Administração e especialista em expansão de mercado B2B na saúde.",
     linkedin: "https://www.linkedin.com/in/luisa-veras-de-sandes-guimar%C3%A3es-85820086/"
   },
   {
@@ -36,8 +30,14 @@ const team = [
   {
     name: "Yasmim Pinheiro",
     role: "Tecnologia & IA",
-    desc: "Engenharia de software e análise de dados.",
+    desc: "Engenheira biomédica e análise de dados.",
     linkedin: "https://www.linkedin.com/in/yasmin-pinheiro-54b86514a/"
+  },
+  {
+    name: "Filipe Zanovello",
+    role: "Expertise Clínica",
+    desc: "Médico em formação.",
+    linkedin: "https://www.linkedin.com/in/filipezanovello/"
   }
 ];
 
