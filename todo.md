@@ -203,3 +203,8 @@
 ## Edições - Abril 2026 (3)
 - [x] Remover card "Cognição Estável" do hero
 - [x] Editar logo para remover símbolo de ECG do cérebro (manter coração e cérebro)
+
+## Correções Chatbot - Abril 2026
+- [x] Chatbot: registrar nome do usuário na primeira interação e usar nas respostas seguintes
+- [x] Chatbot: nunca sugerir que o app está disponível para download
+- [x] Chatbot: quando usuário quiser entrar na lista de espera, coletar nome+e-mail e salvar na tabela waitlist

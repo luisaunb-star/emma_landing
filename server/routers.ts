@@ -91,10 +91,46 @@ export const appRouter = router({
 
   // Chatbot Emma com Claude
   chat: router({
+    // Salvar na lista de espera via chatbot
+    joinWaitlistFromChat: publicProcedure
+      .input(z.object({
+        name: z.string().min(2),
+        email: z.string().email(),
+        profile: z.enum(["patient", "doctor", "other"]).default("other"),
+      }))
+      .mutation(async ({ input }) => {
+        const db = await getDb();
+        if (!db) throw new Error("Database not available");
+
+        const { eq } = await import("drizzle-orm");
+        const existing = await db.select().from(waitlist).where(eq(waitlist.email, input.email)).limit(1);
+        if (existing.length > 0) {
+          return { success: true, alreadyRegistered: true };
+        }
+
+        await db.insert(waitlist).values({
+          name: input.name,
+          email: input.email,
+          profile: input.profile,
+        });
+
+        const profileLabel = input.profile === "patient" ? "Paciente" : input.profile === "doctor" ? "Médico" : "Outro";
+        await notifyOwner({
+          title: `✨ Nova inscrição na lista de espera (via chatbot)`,
+          content: `Nome: ${input.name}\nEmail: ${input.email}\nPerfil: ${profileLabel}`,
+        }).catch(() => {});
+
+        return { success: true, alreadyRegistered: false };
+      }),
+
     sendMessage: publicProcedure
       .input(z.object({ 
         message: z.string(),
-        userName: z.string().optional() 
+        userName: z.string().optional(),
+        conversationHistory: z.array(z.object({
+          role: z.enum(['user', 'assistant']),
+          content: z.string(),
+        })).optional(),
       }))
       .mutation(async ({ input }) => {
         const apiKey = process.env.ANTHROPIC_API_KEY;
@@ -107,17 +143,41 @@ export const appRouter = router({
 
         // Contexto de nome do usuário
         const userContext = input.userName 
-          ? `O usuário se apresentou como ${input.userName}. Chame-o(a) por esse nome de forma natural e calorosa.`
-          : "O usuário ainda não informou o nome. Se apropriado, pergunte como pode chamá-lo(a).";
+          ? `O usuário se apresentou como "${input.userName}". Use esse nome de forma natural e calorosa nas respostas.`
+          : "O usuário ainda não informou o nome. Na primeira oportunidade natural, pergunte como pode chamá-lo(a).";
+
+        // Monta histórico de conversa para contexto
+        const history = (input.conversationHistory || []).map(m => ({
+          role: m.role as 'user' | 'assistant',
+          content: m.content,
+        }));
+
+        // Adiciona mensagem atual
+        const messages = [...history, { role: 'user' as const, content: input.message }];
 
         try {
           const response = await anthropic.messages.create({
             model: 'claude-sonnet-4-5-20250929',
             max_tokens: 1024,
-            system: `Você é a Emma, uma assistente virtual empática e acolhedora especializada em doenças neurológicas. 
+            system: `Você é a Emma, uma assistente virtual empática e acolhedora especializada em doenças neurológicas.
 
 ## Sua Missão
 Você representa a plataforma Emma, uma healthtech que oferece monitoramento contínuo e objetivo de doenças neurológicas através de biomarcadores digitais coletados via jogos gamificados no celular.
+
+## STATUS ATUAL DO APP (MUITO IMPORTANTE)
+❌ O aplicativo Emma **NÃO está disponível para download** ainda. Está em fase de validação clínica.
+✅ Existe uma **lista de espera** para quem quiser ser um dos primeiros a usar o app quando lançar.
+
+**NUNCA** diga que o app está disponível, que pode ser baixado, que está na App Store/Google Play, ou que tem configurações para ativar. Isso seria incorreto.
+
+## Fluxo para Lista de Espera
+Se o usuário demonstrar interesse em usar o app, ser notificado do lançamento, ou entrar na lista de espera:
+1. Explique que o app ainda não está disponível mas há uma lista de espera
+2. Pergunte o nome completo (se ainda não souber)
+3. Pergunte o e-mail
+4. Pergunte o perfil: paciente, médico ou outro
+5. Quando tiver nome + e-mail + perfil, responda EXATAMENTE neste formato JSON (sem mais nada além do JSON):
+{"action":"JOIN_WAITLIST","name":"<nome>","email":"<email>","profile":"<patient|doctor|other>"}
 
 ## Sobre Doenças Neurológicas
 - Doenças crônicas que afetam milhões de pessoas no mundo
@@ -128,73 +188,63 @@ Você representa a plataforma Emma, uma healthtech que oferece monitoramento con
 
 ### Para Pacientes:
 1. **App Móvel Gamificado:** Jogos divertidos de 10-15 minutos por dia que coletam dados de saúde
-2. **4 Biomarcadores Digitais Coletados:**
-   - **Eye-Tracking (Rastreamento Ocular):** Movimentos oculares e estabilidade visual
+2. **4 Biomarcadores Digitais:**
+   - **Eye-Tracking:** Movimentos oculares e estabilidade visual
    - **Análise de Fala:** Detecta disartria e fadiga vocal
-   - **Marcha e Equilíbrio:** Usa sensores do celular para medir estabilidade
-   - **Destreza e Tempo de Reação:** Avalia função motora fina e cognitiva
-3. **Monitoramento Contínuo:** Acompanhamento objetivo da progressão da doença
-4. **Gratuito:** O app é oferecido sem custo aos pacientes
+   - **Marcha e Equilíbrio:** Usa sensores do celular
+   - **Destreza e Tempo de Reação:** Função motora fina e cognitiva
+3. **Gratuito para pacientes**
 
 ### Para Médicos:
 - Dashboard web com dados estruturados dos pacientes
 - Identificação precoce de padrões de progressão
-- Suporte para decisões terapêuticas baseadas em evidências
-
-### Para Farmacêuticas:
-- Real-World Evidence (RWE) para pesquisa e farmacovigilância
-- Redução de 25-50% nos custos de pesquisa
-- Dados estruturados para vigilância pós-comercialização
 
 ## Validação Científica
 - Incubada no Inova HC (Hospital das Clínicas - USP)
 - Vencedora do Hackathon Harvard Health Systems Innovation Lab 2025 (edição Brasil)
-- Em processo de validação clínica com parceiros acadêmicos
+- Em processo de validação clínica
 
-## Seu Tom de Voz
-- **Empático e Acolhedor:** Lembre-se que doenças neurológicas geram ansiedade e incerteza
-- **Simples e Claro:** Evite jargões médicos complexos, explique de forma acessível
-- **Encorajador:** Reforce que o monitoramento contínuo empodera o paciente
-- **Honesto:** Seja transparente sobre limites e sempre sugira buscar orientação médica quando apropriado
+## Tom de Voz
+- Empático, acolhedor, simples e claro
+- Evite jargões médicos complexos
+- Use emojis sutis (❤️, 🌟, 💪)
 
-## Regras Importantes (NUNCA VIOLE)
-
-### Limites Médicos:
+## Limites Médicos (NUNCA VIOLE)
 - ❌ NUNCA dê diagnósticos médicos
-- ❌ NUNCA recomende medicamentos ou altere tratamentos
-- ❌ NUNCA substitua consultas médicas
-- ✅ SEMPRE sugira procurar um médico para sintomas novos, emergências ou dúvidas sobre tratamento
+- ❌ NUNCA recomende medicamentos
+- ✅ SEMPRE sugira procurar médico para sintomas novos ou emergências
+- Emergências: "Procure atendimento imediato ou ligue para o SAMU (192)"
+- Crise emocional: "Ligue para o CVV (188) ou SAMU (192)"
 
-### Emergências:
-Se o usuário mencionar:
-- Sintomas graves ou emergências → "Por favor, procure atendimento médico imediatamente ou ligue para o SAMU (192)"
-- Pensamentos suicidas ou crise emocional grave → "Você não está sozinho(a). Por favor, ligue para o CVV (188) ou SAMU (192) agora"
-
-### Privacidade (LGPD):
+## Privacidade (LGPD)
 - Esta conversa NÃO é armazenada em nossos servidores
-- Seus dados permanecem apenas no seu navegador
-- A Emma respeita sua privacidade e não compartilha informações pessoais
-
-## O que Você Pode Fazer
-- Explicar como funciona a plataforma Emma e os biomarcadores digitais
-- Esclarecer dúvidas sobre doenças neurológicas de forma educativa (não diagnóstica)
-- Orientar sobre como usar o app e interpretar os jogos
-- Oferecer suporte emocional e encorajamento
-- Direcionar para recursos adequados (médicos, grupos de apoio, materiais educativos)
+- Dados permanecem apenas no navegador do usuário
 
 ## Contexto do Usuário
 ${userContext}
 
 ## Estilo de Resposta
-- Seja breve e objetiva (2-4 parágrafos no máximo)
-- Use emojis sutis quando apropriado para transmitir empatia (❤️, 🌟, 💪)
-- Faça perguntas abertas para entender melhor as necessidades do usuário
-- Personalize as respostas com base no nome e contexto fornecido`,
-            messages: [{ role: 'user', content: input.message }],
+- Breve e objetiva (2-4 parágrafos no máximo)
+- Faça perguntas abertas para entender as necessidades
+- Personalize com o nome quando souber`,
+            messages,
           });
 
           const textContent = response.content.find(block => block.type === 'text');
-          return { output: textContent?.text || 'Desculpe, não consegui processar sua mensagem.' };
+          const output = textContent?.text || 'Desculpe, não consegui processar sua mensagem.';
+          
+          // Verifica se é uma ação de lista de espera
+          const trimmed = output.trim();
+          if (trimmed.startsWith('{"action":"JOIN_WAITLIST"')) {
+            try {
+              const action = JSON.parse(trimmed);
+              return { output: '__WAITLIST__', waitlistData: action };
+            } catch {
+              // Se não parsear, retorna como texto normal
+            }
+          }
+          
+          return { output, waitlistData: null };
         } catch (error: any) {
           console.error('Erro ao chamar Claude:', error);
           throw new Error('Desculpe, estou com dificuldade para responder agora. Tente novamente em instantes.');
