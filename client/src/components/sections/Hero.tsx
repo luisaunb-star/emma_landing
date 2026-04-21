@@ -128,7 +128,7 @@ export default function Hero() {
                  <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
                    <div className="flex justify-between items-end mb-2">
                      <h3 className="font-bold text-emma-text text-sm">Seu Progresso</h3>
-                     <span className="text-xs text-emma-success font-bold">+12% essa semana</span>
+                     <span className="text-xs font-bold" style={{ color: '#16a34a' }}>+12% essa semana</span>
                    </div>
                    <div className="h-24 flex items-end gap-1 justify-between px-1">
                      {[40, 65, 45, 80, 55, 70, 85].map((h, i) => (
