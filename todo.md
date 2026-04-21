@@ -199,3 +199,7 @@
 - [x] Trocar "parceiro farmacêutico" por "parceiro corporativo" na seção CTA final
 - [x] Remover botão "Baixar Apresentação" da seção CTA final
 - [x] Corrigir renderização de asteriscos no chatbot (usar Streamdown/markdown renderer)
+
+## Edições - Abril 2026 (3)
+- [x] Remover card "Cognição Estável" do hero
+- [x] Editar logo para remover símbolo de ECG do cérebro (manter coração e cérebro)

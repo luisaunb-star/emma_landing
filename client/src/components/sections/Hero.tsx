@@ -146,16 +146,6 @@ export default function Hero() {
           </div>
           
           {/* Floating Elements */}
-          
-          <div className="absolute bottom-10 -right-4 glass-card p-3 flex items-center gap-3 animate-bounce" style={{ animationDuration: '5s', animationDelay: '1s' }}>
-            <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
-              <Brain className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-xs text-muted-foreground">Cognição</p>
-              <p className="text-sm font-bold text-emma-text">Estável</p>
-            </div>
-          </div>
         </motion.div>
       </div>
     </section>

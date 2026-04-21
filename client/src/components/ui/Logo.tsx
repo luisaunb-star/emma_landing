@@ -7,7 +7,7 @@ interface LogoProps {
   size?: "sm" | "md" | "lg";
 }
 
-const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310419663029611998/fSBNxnDPk5rBKrBA4jebhD/emma_logo_purple_8bea79aa.png";
+const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310419663029611998/fSBNxnDPk5rBKrBA4jebhD/emma_logo_no_ecg_5be551c2.png";
 
 export default function Logo({ className, showText = true, textClassName, size = "lg" }: LogoProps) {
   const sizeClasses = {
