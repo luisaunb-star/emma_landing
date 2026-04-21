@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { ArrowLeft, Send, Paperclip, Mic, Loader2, Shield, Bot } from "lucide-react";
 import Logo from "@/components/ui/Logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { trpc } from "@/lib/trpc";
+import ReactMarkdown from "react-markdown";
 
 export default function Chat() {
   const [userName, setUserName] = useState<string | null>(null);
@@ -12,7 +13,7 @@ export default function Chat() {
     { 
       id: 1, 
       sender: "bot", 
-      text: "Olá! Eu sou a Emma, sua assistente virtual especializada em Esclerose Múltipla. 🌟\n\nPara te ajudar melhor, como posso te chamar?" 
+      text: "Olá! Eu sou a Emma, sua assistente virtual especializada em doenças neurológicas. 🌟\n\nPara te ajudar melhor, como posso te chamar?" 
     }
   ]);
   const [inputValue, setInputValue] = useState("");
@@ -54,7 +55,7 @@ export default function Chat() {
         const welcomeMsg = { 
           id: Date.now() + 1, 
           sender: "bot", 
-          text: `Prazer em conhecer você, ${name}! ❤️\n\nEstou aqui para te ajudar a entender melhor a plataforma Emma e esclarecer dúvidas sobre Esclerose Múltipla. O que você gostaria de saber?` 
+          text: `Prazer em conhecer você, ${name}! ❤️\n\nEstou aqui para te ajudar a entender melhor a plataforma Emma e esclarecer dúvidas sobre doenças neurológicas. O que você gostaria de saber?` 
         };
         setMessages(prev => [...prev, welcomeMsg]);
       }, 500);
@@ -163,7 +164,13 @@ export default function Chat() {
                   : "bg-white text-emma-text border border-border rounded-tl-none"
               }`}
             >
-              <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.text}</p>
+              {msg.sender === "bot" ? (
+                <div className="text-sm leading-relaxed prose prose-sm max-w-none prose-p:my-1 prose-ul:my-1 prose-li:my-0 prose-strong:text-emma-text prose-headings:text-emma-text">
+                  <ReactMarkdown>{msg.text}</ReactMarkdown>
+                </div>
+              ) : (
+                <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.text}</p>
+              )}
             </div>
           </div>
         ))}

@@ -112,9 +112,9 @@ export default function Team() {
           </div>
           
           <div className="relative z-10 max-w-2xl mx-auto space-y-8">
-            <h2 className="text-3xl md:text-5xl font-heading font-bold">Pronto para transformar o monitoramento da EM?</h2>
+            <h2 className="text-3xl md:text-5xl font-heading font-bold">Pronto para transformar o monitoramento de doenças neurológicas?</h2>
             <p className="text-lg text-white/90">
-              Junte-se a nós nessa jornada de inovação e cuidado. Seja você paciente, médico ou parceiro farmacêutico.
+              Junte-se a nós nessa jornada de inovação e cuidado. Seja você paciente, médico ou parceiro corporativo.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/contato">
@@ -122,9 +122,7 @@ export default function Team() {
                   Entrar em Contato
                 </Button>
               </a>
-              <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 text-lg h-14 px-8 rounded-xl">
-                Baixar Apresentação
-              </Button>
+
             </div>
           </div>
         </div>

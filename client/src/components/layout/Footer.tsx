@@ -13,7 +13,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Transformando o monitoramento da Esclerose Múltipla com biomarcadores digitais e cuidado proativo.
+              Transformando o monitoramento de doenças neurológicas com biomarcadores digitais e cuidado proativo.
             </p>
           </div>
           

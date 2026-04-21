@@ -67,7 +67,7 @@ export default function WaitlistForm() {
         </div>
         <div>
           <p className="text-sm font-bold text-emma-text">Lista de Espera</p>
-          <p className="text-xs text-muted-foreground">Seja um dos primeiros a usar o Emma</p>
+          <p className="text-xs text-muted-foreground">Seja um dos primeiros a usar a Emma</p>
         </div>
       </div>
 

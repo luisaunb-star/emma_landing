@@ -132,7 +132,7 @@ export default function Benefits() {
                       <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 font-bold">JP</div>
                       <div>
                         <h3 className="font-bold text-emma-text text-sm">João Pereira</h3>
-                        <p className="text-[10px] text-muted-foreground">ID: 8492 • Esclerose Múltipla Recorrente-Remitente</p>
+                        <p className="text-[10px] text-muted-foreground">ID: 8492 • Doença Neurológica Crônica</p>
                       </div>
                     </div>
                     <span className="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded-full">Estável</span>

@@ -191,3 +191,11 @@
 - [x] Criar formulário de lista de espera para lançamento do app
 - [x] Verificar e corrigir envio de e-mail no formulário de contato geral (/contato)
 - [x] Implementar formulário de lista de espera no hero (Opção A) com envio para contato@emmadigital.care
+
+## Edições - Abril 2026 (2)
+- [x] Substituir referências a EM/Esclerose Múltipla por "doenças neurológicas" em todo o site
+- [x] Remover card flutuante "Estabilidade 98% Normal" do hero
+- [x] Trocar "EM" por "doenças neurológicas" na seção CTA final
+- [x] Trocar "parceiro farmacêutico" por "parceiro corporativo" na seção CTA final
+- [x] Remover botão "Baixar Apresentação" da seção CTA final
+- [x] Corrigir renderização de asteriscos no chatbot (usar Streamdown/markdown renderer)
