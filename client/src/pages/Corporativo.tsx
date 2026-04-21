@@ -570,7 +570,7 @@ export default function Corporativo() {
 
           <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-xs text-slate-500">
-              © {new Date().getFullYear()} Emma Health. Todos os direitos reservados.
+              © {new Date().getFullYear()} Emma Digital. Todos os direitos reservados.
             </p>
             <div className="flex gap-6 text-xs text-slate-500">
               <span>Privacidade</span>
