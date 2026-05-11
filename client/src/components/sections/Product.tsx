@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Eye, Mic, Activity, MousePointer2, Gamepad2, Brain } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 const features = [
   {
@@ -35,6 +36,14 @@ const features = [
 ];
 
 export default function Product() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 1.25;
+    }
+  }, []);
+
   return (
     <section id="product" className="py-24 bg-white relative overflow-hidden">
       <div className="container relative z-10">
@@ -95,9 +104,10 @@ export default function Product() {
               ))}
             </ul>
           </div>
-          <div className="flex-1 relative w-full max-w-md lg:max-w-full">
-            <div className="rounded-3xl overflow-hidden shadow-2xl border border-border/30">
+          <div className="flex-1 flex justify-center">
+            <div className="rounded-3xl overflow-hidden shadow-2xl border border-border/30 w-full max-w-xs">
               <video
+                ref={videoRef}
                 src="https://d2xsxph8kpxj0f.cloudfront.net/310419663029611998/fSBNxnDPk5rBKrBA4jebhD/emma_f2bc6031.mp4"
                 autoPlay
                 loop
