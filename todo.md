@@ -215,3 +215,7 @@
 - [x] Criar helper de envio de e-mail com Resend
 - [x] Integrar envio de e-mail na procedure de waitlist (formulário + chatbot)
 - [x] Integrar envio de e-mail na procedure de contato geral
+
+## Vídeo do App
+- [x] Fazer upload do vídeo emma.mp4 para o CDN
+- [x] Substituir imagem da seção "Monitoramento que não parece exame" pelo vídeo real do app

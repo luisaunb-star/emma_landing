@@ -96,33 +96,15 @@ export default function Product() {
             </ul>
           </div>
           <div className="flex-1 relative w-full max-w-md lg:max-w-full">
-            <div className="aspect-square rounded-3xl bg-gradient-to-br from-emma-primary/20 to-emma-secondary/20 relative overflow-hidden flex items-center justify-center">
-              {/* Abstract Game Visualization */}
-              <div className="absolute inset-0 grid grid-cols-6 grid-rows-6 gap-1 opacity-20">
-                {Array.from({ length: 36 }).map((_, i) => (
-                  <div key={i} className="bg-white rounded-sm"></div>
-                ))}
-              </div>
-              
-              <div className="relative z-10 bg-white p-6 rounded-2xl shadow-2xl max-w-xs w-full transform rotate-3 hover:rotate-0 transition-transform duration-500">
-                <div className="flex justify-between items-center mb-4">
-                  <span className="text-xs font-bold text-muted-foreground">DESAFIO DIÁRIO</span>
-                  <span className="text-xs font-bold text-emma-primary bg-emma-secondary px-2 py-1 rounded-md">Nível 5</span>
-                </div>
-                <div className="h-32 bg-gray-100 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden">
-                  <div className="absolute w-8 h-8 bg-emma-gold rounded-full shadow-lg animate-bounce" style={{ left: '40%', top: '30%' }}></div>
-                  <div className="absolute w-16 h-2 bg-emma-text rounded-full bottom-4 left-1/4"></div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <div>
-                    <p className="text-xs text-muted-foreground">Pontuação</p>
-                    <p className="text-xl font-bold text-emma-text">2,450</p>
-                  </div>
-                  <button className="bg-emma-primary text-white px-4 py-2 rounded-lg text-sm font-bold shadow-md hover:bg-emma-primary/90">
-                    Jogar
-                  </button>
-                </div>
-              </div>
+            <div className="rounded-3xl overflow-hidden shadow-2xl border border-border/30">
+              <video
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663029611998/fSBNxnDPk5rBKrBA4jebhD/emma_f2bc6031.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-auto object-cover"
+              />
             </div>
           </div>
         </div>
