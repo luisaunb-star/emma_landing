@@ -3,6 +3,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { notifyOwner } from "./_core/notification";
+import { sendWaitlistEmail, sendContactEmail } from "./_core/email";
 import { getDb } from "./db";
 import { waitlist, contactMessages } from "../drizzle/schema";
 import Anthropic from '@anthropic-ai/sdk';
@@ -53,6 +54,14 @@ export const appRouter = router({
           content: `Nome: ${input.name}\nEmail: ${input.email}\nPerfil: ${profileLabel}`,
         }).catch(() => {});
 
+        // Envia e-mail via Resend para contato@emmadigital.care
+        await sendWaitlistEmail({
+          name: input.name,
+          email: input.email,
+          profile: profileLabel,
+          source: "form",
+        }).catch(() => {});
+
         return { success: true, alreadyRegistered: false };
       }),
   }),
@@ -83,6 +92,14 @@ export const appRouter = router({
         await notifyOwner({
           title: `📧 Nova mensagem de contato: ${input.subject || "(sem assunto)"}`,
           content: `Nome: ${input.name}\nEmail: ${input.email}\nPerfil: ${profileLabel}\nAssunto: ${input.subject || "-"}\n\nMensagem:\n${input.message}`,
+        }).catch(() => {});
+
+        // Envia e-mail via Resend para contato@emmadigital.care
+        await sendContactEmail({
+          name: input.name,
+          email: input.email,
+          subject: input.subject || "(sem assunto)",
+          message: input.message,
         }).catch(() => {});
 
         return { success: true };
@@ -118,6 +135,14 @@ export const appRouter = router({
         await notifyOwner({
           title: `✨ Nova inscrição na lista de espera (via chatbot)`,
           content: `Nome: ${input.name}\nEmail: ${input.email}\nPerfil: ${profileLabel}`,
+        }).catch(() => {});
+
+        // Envia e-mail via Resend para contato@emmadigital.care
+        await sendWaitlistEmail({
+          name: input.name,
+          email: input.email,
+          profile: profileLabel,
+          source: "chatbot",
         }).catch(() => {});
 
         return { success: true, alreadyRegistered: false };

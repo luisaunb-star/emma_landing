@@ -208,3 +208,10 @@
 - [x] Chatbot: registrar nome do usuário na primeira interação e usar nas respostas seguintes
 - [x] Chatbot: nunca sugerir que o app está disponível para download
 - [x] Chatbot: quando usuário quiser entrar na lista de espera, coletar nome+e-mail e salvar na tabela waitlist
+
+## Integração Resend - E-mail
+- [x] Salvar RESEND_API_KEY como secret
+- [x] Instalar SDK do Resend
+- [x] Criar helper de envio de e-mail com Resend
+- [x] Integrar envio de e-mail na procedure de waitlist (formulário + chatbot)
+- [x] Integrar envio de e-mail na procedure de contato geral
