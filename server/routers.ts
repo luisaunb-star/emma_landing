@@ -55,12 +55,15 @@ export const appRouter = router({
         }).catch(() => {});
 
         // Envia e-mail via Resend para contato@emmadigital.care
-        await sendWaitlistEmail({
+        const emailSent = await sendWaitlistEmail({
           name: input.name,
           email: input.email,
           profile: profileLabel,
           source: "form",
-        }).catch(() => {});
+        });
+        if (!emailSent) {
+          console.error('[Waitlist] Falha ao enviar e-mail via Resend para', input.email);
+        }
 
         return { success: true, alreadyRegistered: false };
       }),
@@ -95,12 +98,15 @@ export const appRouter = router({
         }).catch(() => {});
 
         // Envia e-mail via Resend para contato@emmadigital.care
-        await sendContactEmail({
+        const emailSent = await sendContactEmail({
           name: input.name,
           email: input.email,
           subject: input.subject || "(sem assunto)",
           message: input.message,
-        }).catch(() => {});
+        });
+        if (!emailSent) {
+          console.error('[Contact] Falha ao enviar e-mail via Resend para contato@emmadigital.care');
+        }
 
         return { success: true };
       }),
@@ -138,12 +144,15 @@ export const appRouter = router({
         }).catch(() => {});
 
         // Envia e-mail via Resend para contato@emmadigital.care
-        await sendWaitlistEmail({
+        const emailSent = await sendWaitlistEmail({
           name: input.name,
           email: input.email,
           profile: profileLabel,
           source: "chatbot",
-        }).catch(() => {});
+        });
+        if (!emailSent) {
+          console.error('[Waitlist/Chat] Falha ao enviar e-mail via Resend para', input.email);
+        }
 
         return { success: true, alreadyRegistered: false };
       }),
