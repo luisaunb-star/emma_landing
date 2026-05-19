@@ -40,7 +40,7 @@ export default function Product() {
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.playbackRate = 1.5;
+      videoRef.current.playbackRate = 2;
     }
   }, []);
 
