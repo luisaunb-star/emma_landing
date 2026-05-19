@@ -83,66 +83,11 @@ export default function Hero() {
               <span className="font-bold text-emma-text text-xs text-center leading-tight">Jornada<br/>Gamificada</span>
             </div>
             
-            {/* Mockup Content Placeholder - Will be replaced by generated image or better CSS art */}
-            <div className="bg-gray-100 rounded-2xl overflow-hidden aspect-[9/16] shadow-inner border border-gray-200 relative">
-               {/* Header do App */}
-               <div className="bg-white p-4 flex justify-between items-center shadow-sm">
-                 <div className="flex items-center gap-2">
-                   <div className="w-8 h-8 rounded-full bg-emma-secondary flex items-center justify-center text-emma-primary font-bold">E</div>
-                   <span className="font-bold text-emma-text">Olá, Ana</span>
-                 </div>
-                 <div className="w-8 h-8 rounded-full bg-emma-gold/20 flex items-center justify-center text-emma-gold font-bold">
-                   🏆
-                 </div>
-               </div>
-               
-               {/* Conteúdo do App */}
-               <div className="p-4 space-y-4">
-                 <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
-                   <h3 className="font-bold text-emma-text text-sm mb-2">Sua Jornada Diária</h3>
-                   <div className="flex gap-2">
-                     <div className="flex-1 bg-emma-secondary/30 p-2 rounded-lg text-center">
-                       <div className="w-8 h-8 mx-auto bg-white rounded-full flex items-center justify-center mb-1 text-emma-primary">👁️</div>
-                       <span className="text-[10px] font-medium text-muted-foreground">Visão</span>
-                     </div>
-                     <div className="flex-1 bg-emma-secondary/30 p-2 rounded-lg text-center border border-emma-primary/30 relative overflow-hidden">
-                       <div className="absolute inset-0 bg-emma-primary/5"></div>
-                       <div className="w-8 h-8 mx-auto bg-emma-primary text-white rounded-full flex items-center justify-center mb-1">🗣️</div>
-                       <span className="text-[10px] font-bold text-emma-text">Fala</span>
-                     </div>
-                     <div className="flex-1 bg-emma-secondary/30 p-2 rounded-lg text-center">
-                       <div className="w-8 h-8 mx-auto bg-white rounded-full flex items-center justify-center mb-1 text-emma-primary">⚖️</div>
-                       <span className="text-[10px] font-medium text-muted-foreground">Equilíbrio</span>
-                     </div>
-                   </div>
-                 </div>
-                 
-                 <div className="bg-gradient-to-r from-emma-primary to-indigo-600 p-4 rounded-xl shadow-md text-white">
-                   <h3 className="font-bold text-sm mb-1">Desafio de Voz</h3>
-                   <p className="text-xs opacity-90 mb-3">Leia a frase em voz alta para ganhar pontos.</p>
-                   <button className="w-full bg-white/20 hover:bg-white/30 backdrop-blur-sm py-2 rounded-lg text-xs font-bold transition-colors">
-                     Começar Agora
-                   </button>
-                 </div>
-                 
-                 <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
-                   <div className="flex justify-between items-end mb-2">
-                     <h3 className="font-bold text-emma-text text-sm">Seu Progresso</h3>
-                     <span className="text-xs font-bold" style={{ color: '#16a34a' }}>+12% essa semana</span>
-                   </div>
-                   <div className="h-24 flex items-end gap-1 justify-between px-1">
-                     {[40, 65, 45, 80, 55, 70, 85].map((h, i) => (
-                       <div key={i} className="w-full bg-emma-secondary rounded-t-sm relative group">
-                         <div 
-                           className="absolute bottom-0 left-0 right-0 bg-emma-primary rounded-t-sm transition-all duration-1000"
-                           style={{ height: `${h}%` }}
-                         ></div>
-                       </div>
-                     ))}
-                   </div>
-                 </div>
-               </div>
-            </div>
+            <img
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310419663029611998/fSBNxnDPk5rBKrBA4jebhD/emma-app_edd2d308.jpeg"
+              alt="App Emma Digital"
+              className="rounded-2xl w-full object-cover shadow-inner border border-gray-200"
+            />
           </div>
           
           {/* Floating Elements */}
